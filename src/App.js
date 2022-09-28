@@ -18,8 +18,6 @@ function App() {
     }]
   })
 
-  console.log(beamParams)
-
   const [results, setResults] = useState({})
   const [viewMode, setViewMode] = useState('LOADS')
   const [pointerCoordinates, setPointerCoordinates] = useState()
@@ -208,36 +206,20 @@ function App() {
     const newBeamParams = {...beamParams}
     newBeamParams[propertyName] = Number(newValue)
     setBeamParams(newBeamParams)
-    recalculate()
   }
   
   function updateSupports (newSupports) {
     setBeamParams({...beamParams, supports: newSupports.sort((a, b) => a - b)})
-    recalculate() 
+  }
+  
+  function updateLoads (loadIndex, propertyName, newValue) {
+    const newDistributedLoads = [...beamParams.distributedLoads]
+    newDistributedLoads[loadIndex] = {...(newDistributedLoads[loadIndex])}
+    newDistributedLoads[loadIndex][propertyName] = Number(newValue)
+    setBeamParams({...beamParams, distributedLoads: newDistributedLoads})
   }
   
   /*
-  function updateLoads (shouldDraw = true) {
-    resetViewMode()
-    resetResults()
-    const distributedLoadFieldsets = document.querySelectorAll('[name="distributedload"]')
-    let distributedLoads = []
-    distributedLoadFieldsets.forEach(loadFieldset => {
-      distributedLoads.push({
-        startValue: getInputValue("startValue", loadFieldset),
-        endValue: getInputValue("endValue", loadFieldset),
-        x0: getInputValue("x0", loadFieldset),
-        xf: getInputValue("xf", loadFieldset)
-      })
-    })
-    beamObj.distributedLoads = distributedLoads
-    
-    if (shouldDraw) { 
-      drawSVG()
-      resetViewMode()
-    }
-  }
-  
   function updateCoordinates ({clientX, clientY}) {
     const svg = document.querySelector('#drawing-area')
     let point = new DOMPoint(clientX, clientY)
@@ -344,6 +326,7 @@ function App() {
       <BeamForm
         beamParams={beamParams}
         setBeamParams={setBeamParams}
+        updateLoads={updateLoads}
         updateProperty={updateProperty}
         updateSupports={updateSupports}
       />
