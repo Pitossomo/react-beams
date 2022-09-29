@@ -57,7 +57,7 @@ const SvgElements = ({viewMode, beamParams, results}) => {
       return <g id="shearforce-group-svg">
         <path d={shearPath}/>
         {
-          results.edges.forEach(edge => {
+          results.edges.map(edge => {
             const startValue = results.shearForce(edge.startNode.x + SMALL_DX)
             const endValue = results.shearForce(edge.endNode.x - SMALL_DX)
 
