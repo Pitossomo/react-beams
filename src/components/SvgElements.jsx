@@ -1,50 +1,24 @@
 import { Fragment } from "react"
+import LoadsSVG from "./LoadsSVG"
 import TextSVG from "./TextSVG"
 
 const SVG_Y_SCALE = 0.1
 const SVG_OFFSET = 0.1
 const SMALL_DX = 0.000000001
-const TEXT_OFFSET = 0.1
 const OFFSET_DX = 1/1000
 
 const SvgElements = ({viewMode, beamParams, results}) => {
   console.log(viewMode)
   switch (viewMode) {
     case 'LOADS':
-      return <Fragment>
-        <g id="load-texts-group-svg"></g>
-        <g id="distributed-loads-group-svg">
-          { beamParams.distributedLoads.map((load, index) => (
-            <Fragment key={`distLoad${index}`}>
-              <polygon points={
-                `${load.x0},${-SVG_OFFSET} `+
-                `${load.xf},${-SVG_OFFSET} `+
-                `${load.xf},${-load.endValue*SVG_Y_SCALE-SVG_OFFSET} `+
-                `${load.x0},${-load.startValue*SVG_Y_SCALE-SVG_OFFSET}`
-              }/>
-              <text
-                className="load-text"
-                x={load.x0}
-                y={-load.startValue*SVG_Y_SCALE-SVG_OFFSET-TEXT_OFFSET}
-              >
-                {load.startValue.toFixed(2)}
-              </text>
-              
-              { load.startValue !== load.endValue ? (
-                <text 
-                  className="load-text"
-                  x={load.xf}
-                  y={-load.endValue*SVG_Y_SCALE-SVG_OFFSET-TEXT_OFFSET}
-                >
-                  {load.endValue.toFixed(2)}
-                </text>
-              ) : null }
-            </Fragment>
-          ))}
-        </g>
-        <g id="reactions-group-svg"></g>
-      </Fragment>
-
+      return (
+        <LoadsSVG 
+          distributedLoads={beamParams.distributedLoads}
+          punctualLoads={beamParams.punctualLoads}
+          SVG_OFFSET={SVG_OFFSET}
+          SVG_Y_SCALE={SVG_Y_SCALE} 
+        />
+      )
     case 'SHEAR':
       let shearPath = `M${SMALL_DX} 0 `
       results.edges.forEach(edge => {
@@ -104,6 +78,28 @@ const SvgElements = ({viewMode, beamParams, results}) => {
         ))
         }
       </g>
+
+    case 'REACTIONS':
+      return (
+        <Fragment>
+          <LoadsSVG 
+            distributedLoads={beamParams.distributedLoads}
+            punctualLoads={beamParams.punctualLoads}
+            SVG_OFFSET={SVG_OFFSET}
+            SVG_Y_SCALE={SVG_Y_SCALE} 
+          />
+          { results.reactions.map((reaction, i) => {
+            if (!reaction) return null
+            return <Fragment key={`reaction${i}`}>
+              <use 
+                href={(reaction >= 0 ? '#up' : '#down')+'-reaction-force-svg'}
+                x={results.nodes[i].x}
+              />
+              <TextSVG x={results.nodes[i].x} y={1} content={reaction} />
+            </Fragment>
+          })}
+        </Fragment>
+      )
   }
 }
 
