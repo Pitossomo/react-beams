@@ -1,12 +1,7 @@
-import { Fragment, useEffect } from "react";
+import SvgElements from "./SvgElements";
 
-const Svg = ({beamParams, results, updateCoordinates}) => {
+const Svg = ({viewMode, beamParams, results, updateCoordinates}) => {
   const viewBox = `${-1} ${-3} ${beamParams.length + 2} ${6}`
-
-  const SVG_Y_SCALE = 0.1
-  const SVG_OFFSET = 0.1
-  const SMALL_DX = 0.000000001
-  const TEXT_OFFSET = 0.1
 
   return (
     <svg onMouseMove={updateCoordinates} viewBox={viewBox} id="drawing-area" xmlns="http://www.w3.org/2000/svg">      
@@ -26,7 +21,7 @@ const Svg = ({beamParams, results, updateCoordinates}) => {
           <line x1="0" x2="0" y1="0.5" y2="1.0" />
           <polyline points="-0.1,0.8 0,1.0 0.1,0.8" />
         </g>
-      </defs>  
+      </defs>
       <g id="svg-elements">
         <line x1="0" x2={beamParams.length} id="beam-svg" />
         <g id="supports-group-svg">
@@ -34,41 +29,9 @@ const Svg = ({beamParams, results, updateCoordinates}) => {
             <use key={support} href="#support-def-svg" x={support} />
           ))}
         </g>
-        <g id="load-texts-group-svg"></g>
-        <g id="distributed-loads-group-svg">
-          { beamParams.distributedLoads.map((load, index) => (
-            <Fragment key={`distLoad${index}`}>
-              <polygon points={
-                `${load.x0},${-SVG_OFFSET} `+
-                `${load.xf},${-SVG_OFFSET} `+
-                `${load.xf},${-load.endValue*SVG_Y_SCALE-SVG_OFFSET} `+
-                `${load.x0},${-load.startValue*SVG_Y_SCALE-SVG_OFFSET}`
-              }/>
-              <text
-                className="load-text"
-                x={load.x0}
-                y={-load.startValue*SVG_Y_SCALE-SVG_OFFSET-TEXT_OFFSET}
-              >
-                {load.startValue.toFixed(2)}
-              </text>
-              
-              { load.startValue !== load.endValue ? (
-                <text 
-                  className="load-text"
-                  x={load.xf}
-                  y={-load.endValue*SVG_Y_SCALE-SVG_OFFSET-TEXT_OFFSET}
-                >
-                  {load.endValue.toFixed(2)}
-                </text>
-              ) : null }
-            </Fragment>
-          ))}
-        </g>
-        <g id="reactions-group-svg"></g>
-        <g id="shearforce-group-svg"></g>
-        <g id="bending-moment-group-svg"></g>
+        <SvgElements viewMode={viewMode} beamParams={beamParams} results={results} />
         <line id="highlight-line" x1="0" x2="0" y1="0" y2="0" />
-      </g>
+      </g>  
     </svg>
   )
 }

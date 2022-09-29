@@ -1,8 +1,8 @@
-const Controls = ({updateViewMode}) => (
+const Controls = ({viewMode, updateViewMode}) => (
   <aside>
     <div>
       <label>View Mode</label>
-      <select name="view-mode" class="view-mode-selector" onChange={updateViewMode}>
+      <select name="view-mode" value={viewMode} className="view-mode-selector" onChange={e => updateViewMode(e.target.value)}>
         <option value="LOADS">Loads</option>
         <option value="REACTIONS">Reactions</option>
         <option value="SHEAR">Shear Force</option>

@@ -71,26 +71,7 @@ function App() {
     switch (viewMode) {
       case 'SHEAR':
         const shearForceGroup = document.querySelector('#shearforce-group-svg')
-        let shearPath = `M${SMALL_DX} 0 `
-        results.edges.forEach(edge => {
-          shearPath += `L${edge.startNode.x + SMALL_DX} ${-results.shearForce(edge.startNode.x)*SVG_Y_SCALE} `
-          for (let x = edge.startNode.x + SMALL_DX; x <= edge.endNode.x - SMALL_DX; x += offsetDx) {
-            shearPath += `L${x} ${-results.shearForce(x)*SVG_Y_SCALE} `
-          }
-          shearPath += `L${edge.endNode.x - SMALL_DX} 0 `
-          const startValue = results.shearForce(edge.startNode.x + SMALL_DX)
-          addTextSVG(startValue.toFixed(2).toLocaleString(),
-            shearForceGroup,
-            edge.startNode.x,
-            -(startValue*SVG_Y_SCALE + (startValue > 0 ? FONT_SIZE : 0))
-          )
-          const endValue = results.shearForce(edge.endNode.x - SMALL_DX)
-          addTextSVG(endValue.toFixed(2).toLocaleString(),
-            shearForceGroup,
-            edge.endNode.x,
-            -(endValue*SVG_Y_SCALE + (endValue > 0 ? FONT_SIZE : 0))
-          )
-        })
+       
         addElementSVG('path', shearForceGroup, {'d': shearPath})
         break;
       case 'MOMENTS':
@@ -195,13 +176,13 @@ function App() {
     viewModeSelector.selectedIndex = 0
     viewMode = 'LOADS'
   }
- 
+ */
+
   function updateViewMode(newViewMode) {
-    if (newViewMode !== 'LOADS') recalculate()
+    if (viewMode === 'LOADS' && newViewMode !== 'LOADS') recalculate()
     setViewMode(newViewMode)
   }
-  */
-
+  
   function updateProperty (propertyName, newValue) {
     const newBeamParams = {...beamParams}
     newBeamParams[propertyName] = Number(newValue)
@@ -313,14 +294,12 @@ function App() {
   }
   */
 
-  /*
-    <Controls results={results} setResults={setResults} beamParams={beamParams} setBeamParams={setBeamParams} updateViewMode={updateViewMode} />
-  */  
   
   return (
     <div className="App">
       <div className="svg-wrapper">
-        <Svg results={results} beamParams={beamParams} />
+        <Svg results={results} beamParams={beamParams} viewMode={viewMode} />
+        <Controls viewMode={viewMode} updateViewMode={updateViewMode} />
       </div>
       
       <BeamForm
