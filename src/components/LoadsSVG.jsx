@@ -1,8 +1,8 @@
 import { Fragment } from "react"
 import TextSVG from "./TextSVG"
 
-const LoadsSVG = ({punctualLoads, distributedLoads, SVG_OFFSET, SVG_Y_SCALE}) => (
-  <g id="distributed-loads-group-svg">
+const LoadsSVG = ({isBlurred, punctualLoads, distributedLoads, SVG_OFFSET, SVG_Y_SCALE}) => (
+  <g className={isBlurred ? 'blurred' : ''} id="distributed-loads-group-svg">
     { distributedLoads.map((load, index) => (
       <Fragment key={`distLoad${index}`}>
         <polygon points={

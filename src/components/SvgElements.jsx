@@ -19,6 +19,7 @@ const SvgElements = ({viewMode, beamParams, results}) => {
           SVG_Y_SCALE={SVG_Y_SCALE} 
         />
       )
+
     case 'SHEAR':
       let shearPath = `M${SMALL_DX} 0 `
       results.edges.forEach(edge => {

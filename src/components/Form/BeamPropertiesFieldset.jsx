@@ -1,6 +1,6 @@
 import { Fragment } from "react"
 
-const BeamProperties = ({beamParams, updateProperty}) => {
+const BeamPropertiesFieldset = ({beamParams, updateProperty}) => {
   const beamProperties = [
     { name: 'length', label: 'Comprimento' },
     { name: 'young', label: 'Módulo de Young - E' },
@@ -25,4 +25,4 @@ const BeamProperties = ({beamParams, updateProperty}) => {
   )
 }
 
-export default BeamProperties
+export default BeamPropertiesFieldset

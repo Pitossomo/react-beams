@@ -1,4 +1,8 @@
+import LoadsSVG from "./LoadsSVG";
 import SvgElements from "./SvgElements";
+
+const SVG_Y_SCALE = 0.1
+const SVG_OFFSET = 0.1
 
 const Svg = ({viewMode, beamParams, results, updateCoordinates}) => {
   const viewBox = `${-1} ${-3} ${beamParams.length + 2} ${6}`
