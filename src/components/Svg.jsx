@@ -1,13 +1,11 @@
-import SvgElements from "./SvgElements";
+import HighlightLine from "./Svg/HighlightLineSVG";
+import SvgElements from "./Svg/SvgElements";
 
-const SVG_Y_SCALE = 0.1
 
 const Svg = ({svgRef, viewMode, beamParams, results, pointerCoordinates, updatePointerCoordinates}) => {
-  const viewBox = `${-1} ${-3} ${beamParams.length + 2} ${6}`
-
   return (
     <svg id="drawing-area" xmlns="http://www.w3.org/2000/svg"
-      ref={svgRef} viewBox={viewBox}
+      ref={svgRef} viewBox={`${-1} ${-3} ${beamParams.length + 2} ${6}`}
       onMouseMove={updatePointerCoordinates}
     >      
       <defs>
@@ -35,15 +33,7 @@ const Svg = ({svgRef, viewMode, beamParams, results, pointerCoordinates, updateP
           ))}
         </g>
         <SvgElements viewMode={viewMode} beamParams={beamParams} results={results} />
-        { pointerCoordinates
-          ? <line id="highlight-line"
-              x1={pointerCoordinates.x} 
-              x2={pointerCoordinates.x}
-              y1="0"
-              y2={-pointerCoordinates.y*SVG_Y_SCALE*(viewMode === 'MOMENTS' ? -1 : 1)}
-            /> 
-          : null
-        }
+        <HighlightLine viewMode={viewMode} pointerCoordinates={pointerCoordinates} />
       </g>  
     </svg>
   )

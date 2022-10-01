@@ -1,25 +1,21 @@
 import { Fragment } from "react"
+import { OFFSET_DX, SMALL_DX, SVG_OFFSET, SVG_Y_SCALE } from "../../utils/constants"
 import LoadsSVG from "./LoadsSVG"
 import TextSVG from "./TextSVG"
 
-const SVG_Y_SCALE = 0.1
-const SVG_OFFSET = 0.1
-const SMALL_DX = 0.000000001
-const OFFSET_DX = 1/1000
-
 const SvgElements = ({viewMode, beamParams, results}) => {
+  const DrawLoads = ({isBlurred}) => (
+    <LoadsSVG 
+      distributedLoads={beamParams.distributedLoads}
+      punctualLoads={beamParams.punctualLoads}
+      SVG_OFFSET={SVG_OFFSET}
+      SVG_Y_SCALE={SVG_Y_SCALE}
+      isBlurred={isBlurred}
+    />
+  )
+
   console.log(viewMode)
   switch (viewMode) {
-    case 'LOADS':
-      return (
-        <LoadsSVG 
-          distributedLoads={beamParams.distributedLoads}
-          punctualLoads={beamParams.punctualLoads}
-          SVG_OFFSET={SVG_OFFSET}
-          SVG_Y_SCALE={SVG_Y_SCALE} 
-        />
-      )
-
     case 'SHEAR':
       let shearPath = `M${SMALL_DX} 0 `
       results.edges.forEach(edge => {
@@ -29,23 +25,25 @@ const SvgElements = ({viewMode, beamParams, results}) => {
         }
         shearPath += `L${edge.endNode.x - SMALL_DX} 0 `
       })
-      return <g id="shearforce-group-svg">
-        <path d={shearPath}/>
-        {
-          results.edges.map(edge => {
-            const startValue = results.shearForce(edge.startNode.x + SMALL_DX)
-            const endValue = results.shearForce(edge.endNode.x - SMALL_DX)
+      return <Fragment>
+        <DrawLoads isBlurred={true} />
+        <g id="shearforce-group-svg">
+          <path d={shearPath}/>
+          {
+            results.edges.map(edge => {
+              const startValue = results.shearForce(edge.startNode.x + SMALL_DX)
+              const endValue = results.shearForce(edge.endNode.x - SMALL_DX)
 
-            return (
-              <Fragment key={`edge${edge.startNode.x}`}>
-                <TextSVG x={edge.startNode.x} y={-startValue*SVG_Y_SCALE} content={startValue} />
-                <TextSVG x={edge.endNode.x} y={-endValue*SVG_Y_SCALE} content={endValue} />
-              </Fragment>
-            )
-          })
-        }
-      </g>
-
+              return (
+                <Fragment key={`edge${edge.startNode.x}`}>
+                  <TextSVG x={edge.startNode.x} y={-startValue*SVG_Y_SCALE} content={startValue} />
+                  <TextSVG x={edge.endNode.x} y={-endValue*SVG_Y_SCALE} content={endValue} />
+                </Fragment>
+              )
+            })
+          }
+        </g>
+      </Fragment> 
     case 'MOMENTS':
       let previousValues = {
         "x-1": 0,
@@ -68,27 +66,23 @@ const SvgElements = ({viewMode, beamParams, results}) => {
         previousValues["Mx-1"] = momentX
         previousValues["x-1"] = x
       }
-
-      return <g id="bending-moment-group-svg">
-        <path d={momentPath} />
-        { extremeValues.map(({x, value}) => (
-          <Fragment key={`extremeValue${x}`}>
-            <TextSVG x={x} y={value*SVG_Y_SCALE} content={value} />
-            <line x1={x} x2={x} y1='0' y2={value*SVG_Y_SCALE} />
-          </Fragment> 
-        ))
-        }
-      </g>
-
+      return <Fragment>
+        <DrawLoads isBlurred={true} />
+        <g id="bending-moment-group-svg">
+          <path d={momentPath} />
+          { extremeValues.map(({x, value}) => (
+            <Fragment key={`extremeValue${x}`}>
+              <TextSVG x={x} y={value*SVG_Y_SCALE} content={value} />
+              <line x1={x} x2={x} y1='0' y2={value*SVG_Y_SCALE} />
+            </Fragment> 
+          ))
+          }
+        </g>  
+      </Fragment>
     case 'REACTIONS':
       return (
         <Fragment>
-          <LoadsSVG 
-            distributedLoads={beamParams.distributedLoads}
-            punctualLoads={beamParams.punctualLoads}
-            SVG_OFFSET={SVG_OFFSET}
-            SVG_Y_SCALE={SVG_Y_SCALE} 
-          />
+          <DrawLoads />
           { results.reactions.map((reaction, i) => {
             if (!reaction) return null
             return <Fragment key={`reaction${i}`}>
@@ -101,6 +95,8 @@ const SvgElements = ({viewMode, beamParams, results}) => {
           })}
         </Fragment>
       )
+    default:
+      return <DrawLoads />
   }
 }
 

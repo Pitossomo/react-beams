@@ -22,9 +22,10 @@ function App() {
   const [results, setResults] = useState({})
   const [viewMode, setViewMode] = useState('LOADS')
   const [pointerCoordinates, setPointerCoordinates] = useState()
-
+  
   function updateViewMode(newViewMode) {
     if (viewMode === 'LOADS' && newViewMode !== 'LOADS') recalculate(beamParams)
+    else setPointerCoordinates()
     setViewMode(newViewMode)
   }
   
@@ -58,6 +59,8 @@ function App() {
     const distributedLoads = params.distributedLoads.map(load => (
       new DistributedLoad(load.startValue, load.endValue, load.x0, load.xf)
     ))
+
+    setPointerCoordinates()
     setResults(new Beam(nodes, distributedLoads))
   }
 

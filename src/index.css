@@ -18,33 +18,22 @@ svg {
   z-index: 1;
 }
 
-aside {
-  padding: 4px;
-  display: flex;
-  flex-direction: column;
-}
-
-input.node-x {
-  width: 40px;
-  margin: 0;
-}
-
-input.num-field {
-  width: 40px;
-  margin: 0;
-}
-
-
 svg * {
   stroke-width: 0.2%;
-}
-
-#svg-elements {
   stroke: black;
 }
 
 #distributed-loads-group-svg polygon {
   fill: url(#vertical-lines-pattern)
+}
+
+#distributed-loads-group-svg.blurred * {
+  stroke: gray;
+  stroke-width: 0.1%;
+}
+
+#distributed-loads-group-svg.blurred text {
+  stroke: lightgray;
 }
 
 .reaction-arrow {
@@ -77,5 +66,22 @@ svg * {
 text {
   stroke: maroon;
   font-family: monospace;
+  font-weight: lighter;
   font-size: 0.02em;
+}
+
+aside {
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+input.node-x {
+  width: 40px;
+  margin: 0;
+}
+
+input.num-field {
+  width: 40px;
+  margin: 0;
 }

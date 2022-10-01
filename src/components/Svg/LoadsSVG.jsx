@@ -1,7 +1,8 @@
 import { Fragment } from "react"
+import { SVG_OFFSET, SVG_Y_SCALE } from "../../utils/constants"
 import TextSVG from "./TextSVG"
 
-const LoadsSVG = ({isBlurred, punctualLoads, distributedLoads, SVG_OFFSET, SVG_Y_SCALE}) => (
+const LoadsSVG = ({isBlurred, punctualLoads, distributedLoads}) => (
   <g className={isBlurred ? 'blurred' : ''} id="distributed-loads-group-svg">
     { distributedLoads.map((load, index) => (
       <Fragment key={`distLoad${index}`}>
@@ -13,14 +14,16 @@ const LoadsSVG = ({isBlurred, punctualLoads, distributedLoads, SVG_OFFSET, SVG_Y
         }/>
         <TextSVG
           x={load.x0}
-          y={-load.startValue*SVG_Y_SCALE-SVG_OFFSET}
+          y={-load.startValue*SVG_Y_SCALE}
           content={load.startValue}
+          anchor='end'
         />
         { load.startValue !== load.endValue ? (
           <TextSVG 
             x={load.xf}
-            y={-load.endValue*SVG_Y_SCALE-SVG_OFFSET}
+            y={-load.endValue*SVG_Y_SCALE}
             content={load.endValue}
+            anchor='start'
           />
         ) : null }
       </Fragment>
