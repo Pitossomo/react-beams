@@ -14,7 +14,6 @@ const SvgElements = ({viewMode, beamParams, results}) => {
     />
   )
 
-  console.log(viewMode)
   switch (viewMode) {
     case 'SHEAR':
       let shearPath = `M${SMALL_DX} 0 `
@@ -25,6 +24,7 @@ const SvgElements = ({viewMode, beamParams, results}) => {
         }
         shearPath += `L${edge.endNode.x - SMALL_DX} 0 `
       })
+
       return <Fragment>
         <DrawLoads isBlurred={true} />
         <g id="shearforce-group-svg">
@@ -36,8 +36,8 @@ const SvgElements = ({viewMode, beamParams, results}) => {
 
               return (
                 <Fragment key={`edge${edge.startNode.x}`}>
-                  <TextSVG x={edge.startNode.x} y={-startValue*SVG_Y_SCALE} content={startValue} />
-                  <TextSVG x={edge.endNode.x} y={-endValue*SVG_Y_SCALE} content={endValue} />
+                  <TextSVG x={edge.startNode.x} y={-startValue*SVG_Y_SCALE} content={startValue} anchor='start'/>
+                  <TextSVG x={edge.endNode.x} y={-endValue*SVG_Y_SCALE} content={endValue} anchor='end' />
                 </Fragment>
               )
             })
@@ -72,7 +72,7 @@ const SvgElements = ({viewMode, beamParams, results}) => {
           <path d={momentPath} />
           { extremeValues.map(({x, value}) => (
             <Fragment key={`extremeValue${x}`}>
-              <TextSVG x={x} y={value*SVG_Y_SCALE} content={value} />
+              <TextSVG x={x} y={value*SVG_Y_SCALE + Math.sign(value)*SVG_OFFSET} content={value} anchor='middle' />
               <line x1={x} x2={x} y1='0' y2={value*SVG_Y_SCALE} />
             </Fragment> 
           ))

@@ -7,7 +7,7 @@ const TextSVG = ({x, y, content, anchor='start'}) => {
       xOffset = TEXT_OFFSET
       break
     case 'end':
-      xOffset = TEXT_OFFSET
+      xOffset = -TEXT_OFFSET
       break
     default:
       xOffset = 0
@@ -18,6 +18,7 @@ const TextSVG = ({x, y, content, anchor='start'}) => {
       x={x + xOffset}
       y={y + Math.sign(y)*TEXT_OFFSET}
       textAnchor={anchor}
+      dominantBaseline={ y <= 0 ? 'alphabetic' : 'hanging'}
     >
       {content.toFixed(2).toLocaleString()}
     </text>
