@@ -7,22 +7,19 @@ const Controls = ({viewMode, pointerCoordinates, updateViewMode}) => (
         <option value="REACTIONS">Reactions</option>
         <option value="SHEAR">Shear Force</option>
         <option value="MOMENTS">Bending Moment</option>
-      </select>  
+      </select>
     </div>
     <div>
-      <p>
-        <strong id="x-label">X: </strong>
-        <span id="x-value">
-          {pointerCoordinates ? pointerCoordinates.x.toFixed(2).toLocaleString() : "-"}
-        </span>
-      </p>
-
-      <p>
-        <strong id="y-label">Value in x: </strong>
-        <span id="y-value">
-          {pointerCoordinates ? pointerCoordinates.y.toFixed(2).toLocaleString() : "-"}
-        </span>  
-      </p>
+      <strong id="x-label">X: </strong>
+      <span id="x-value">
+        { pointerCoordinates ? pointerCoordinates.x.toFixed(2).toLocaleString() : "-"}
+      </span>
+    </div>
+    <div>
+      <strong id="y-label">Value in x: </strong>
+      <span id="y-value">
+        { pointerCoordinates ? pointerCoordinates.y.toFixed(2).toLocaleString() : "-"}
+      </span>
     </div>
   </aside>
 )

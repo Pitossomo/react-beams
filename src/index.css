@@ -8,20 +8,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 1200px;
-
 }
 
 .svg-wrapper {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   margin: 30px;
 }
 
-svg {
+svg { 
   border: 2px inset;
   background-color: lightgray;
-  width: 90vw;
   max-width: 1000px;
   height: 50vh;
   z-index: 1;
@@ -90,11 +87,16 @@ text {
 aside {
   padding: 4px;
   display: flex;
-  flex-direction: column;
+  justify-items: center;
+}
+
+aside div {
+  flex-grow: 1;
 }
 
 input.num-field {
-  width: 40px;
+  width: 60px;
+  text-align: right;
   margin: 3px;
   border: 1px solid lightgray;
   border-bottom: 1px solid black;
