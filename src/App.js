@@ -2,7 +2,7 @@ import { Beam, DistributedLoad, Node, PunctualLoad } from "beamsjs"
 import Svg from "./components/Svg"
 import BeamForm from "./components/BeamForm"
 import Controls from "./components/Controls"
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 function App() {
   const [beamParams, setBeamParams] = useState({
@@ -18,6 +18,7 @@ function App() {
     }]
   })
 
+  const svgRef = useRef()
   const [results, setResults] = useState({})
   const [viewMode, setViewMode] = useState('LOADS')
   const [pointerCoordinates, setPointerCoordinates] = useState()
@@ -60,52 +61,43 @@ function App() {
     setResults(new Beam(nodes, distributedLoads))
   }
 
-  /*
-  function updateCoordinates ({clientX, clientY}) {
-    const svg = document.querySelector('#drawing-area')
+  function updatePointerCoordinates ({clientX, clientY}) {
     let point = new DOMPoint(clientX, clientY)
-    point = point.matrixTransform(svg.getScreenCTM().inverse())
-  
-    const xSpan = document.querySelector("#x-value")
-    const ySpan = document.querySelector("#y-value")
+    point = point.matrixTransform(svgRef.current.getScreenCTM().inverse())
+
+    const xValue = Math.min(Math.max(0, point.x), beamParams.length)
     
-    if (point.x < 0) point.x = 0
-    else if (point.x > beamObj.length) point.x = beamObj.length
-  
-    xSpan.innerHTML = point.x.toFixed(2).toLocaleString()
-    const highlightLine = document.querySelector('#highlight-line')
-    let yValue, ySign
-  
+    let yValue
     switch (viewMode) {
       case 'SHEAR':
-        yValue = results.shearForce(point.x)
-        ySign = 1
-        break;
+        yValue = results.shearForce(xValue)
+        break
       case 'MOMENTS':
-        yValue = results.bendingMoment(point.x)
-        ySign = -1
-        break;
+        yValue = results.bendingMoment(xValue)
+        break
       default:
-        ySpan.innerHTML = '-'
-        setAttributesSVG(highlightLine, { visibility: "hidden" })
+        setPointerCoordinates()
         return
     }
-  
-    setAttributesSVG(highlightLine, { 
-      x1: point.x,
-      x2: point.x,
-      y2: -yValue*SVG_Y_SCALE*ySign,
-      visibility: yValue ? "visible" : "hidden"
-    })
-    ySpan.innerHTML = yValue.toFixed(2).toLocaleString()
+
+    setPointerCoordinates({x: xValue, y: yValue})
   }
-  */
 
   return (
     <div className="App">
       <div className="svg-wrapper">
-        <Svg results={results} beamParams={beamParams} viewMode={viewMode} />
-        <Controls viewMode={viewMode} updateViewMode={updateViewMode} />
+        <Svg 
+          svgRef={svgRef}
+          results={results}
+          beamParams={beamParams}
+          viewMode={viewMode}
+          pointerCoordinates={pointerCoordinates}
+          updatePointerCoordinates={updatePointerCoordinates}
+        />
+        <Controls 
+          viewMode={viewMode} updateViewMode={updateViewMode} 
+          pointerCoordinates={pointerCoordinates}
+        />
       </div>
       
       <BeamForm

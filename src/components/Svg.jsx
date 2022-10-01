@@ -1,14 +1,15 @@
-import LoadsSVG from "./LoadsSVG";
 import SvgElements from "./SvgElements";
 
 const SVG_Y_SCALE = 0.1
-const SVG_OFFSET = 0.1
 
-const Svg = ({viewMode, beamParams, results, updateCoordinates}) => {
+const Svg = ({svgRef, viewMode, beamParams, results, pointerCoordinates, updatePointerCoordinates}) => {
   const viewBox = `${-1} ${-3} ${beamParams.length + 2} ${6}`
 
   return (
-    <svg onMouseMove={updateCoordinates} viewBox={viewBox} id="drawing-area" xmlns="http://www.w3.org/2000/svg">      
+    <svg id="drawing-area" xmlns="http://www.w3.org/2000/svg"
+      ref={svgRef} viewBox={viewBox}
+      onMouseMove={updatePointerCoordinates}
+    >      
       <defs>
         <g id="support-def-svg">
           <polygon points="-0.1,0.2 0.1,0.2 0,0.03" />
@@ -34,7 +35,15 @@ const Svg = ({viewMode, beamParams, results, updateCoordinates}) => {
           ))}
         </g>
         <SvgElements viewMode={viewMode} beamParams={beamParams} results={results} />
-        <line id="highlight-line" x1="0" x2="0" y1="0" y2="0" />
+        { pointerCoordinates
+          ? <line id="highlight-line"
+              x1={pointerCoordinates.x} 
+              x2={pointerCoordinates.x}
+              y1="0"
+              y2={-pointerCoordinates.y*SVG_Y_SCALE*(viewMode === 'MOMENTS' ? -1 : 1)}
+            /> 
+          : null
+        }
       </g>  
     </svg>
   )

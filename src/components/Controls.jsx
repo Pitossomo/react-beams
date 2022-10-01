@@ -1,4 +1,4 @@
-const Controls = ({viewMode, updateViewMode}) => (
+const Controls = ({viewMode, pointerCoordinates, updateViewMode}) => (
   <aside>
     <div>
       <label>View Mode</label>
@@ -12,11 +12,16 @@ const Controls = ({viewMode, updateViewMode}) => (
     <div>
       <p>
         <strong id="x-label">X: </strong>
-        <span id="x-value">-</span>
+        <span id="x-value">
+          {pointerCoordinates ? pointerCoordinates.x.toFixed(2).toLocaleString() : "-"}
+        </span>
       </p>
+
       <p>
         <strong id="y-label">Value in x: </strong>
-        <span id="y-value">-</span>  
+        <span id="y-value">
+          {pointerCoordinates ? pointerCoordinates.y.toFixed(2).toLocaleString() : "-"}
+        </span>  
       </p>
     </div>
   </aside>
