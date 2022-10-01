@@ -26,7 +26,7 @@ const SupportsFieldset = ({beamParams, updateSupports}) => {
             name="support[]"
             step={STEP}
             value={supportX}
-            update={e => handleSupportChange(e.target.value, index)}
+            update={newValue => handleSupportChange(newValue, index)}
             attributes={attributes}
           />
         )

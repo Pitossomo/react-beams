@@ -33,11 +33,17 @@ const SvgElements = ({viewMode, beamParams, results}) => {
             results.edges.map(edge => {
               const startValue = results.shearForce(edge.startNode.x + SMALL_DX)
               const endValue = results.shearForce(edge.endNode.x - SMALL_DX)
-
+              
               return (
                 <Fragment key={`edge${edge.startNode.x}`}>
-                  <TextSVG x={edge.startNode.x} y={-startValue*SVG_Y_SCALE} content={startValue} anchor='start'/>
-                  <TextSVG x={edge.endNode.x} y={-endValue*SVG_Y_SCALE} content={endValue} anchor='end' />
+                  { Number(startValue.toFixed(2)) 
+                    ? <TextSVG x={edge.startNode.x} y={-startValue*SVG_Y_SCALE} content={startValue} anchor='start'/>
+                    : null
+                  }
+                  { Number(endValue.toFixed(2))
+                    ? <TextSVG x={edge.endNode.x} y={-endValue*SVG_Y_SCALE} content={endValue} anchor='end' />
+                    : null 
+                  }
                 </Fragment>
               )
             })

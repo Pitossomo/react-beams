@@ -1,10 +1,48 @@
-const NumberInput = ({name, value, update, step, attributes}) => {
+import { useState } from "react"
+import { assertBetween } from "../../utils/helpers"
+
+const NumberInput = ({name, value, update, step, attributes = {}}) => {
+  const [textValue, setTextValue] = useState(value.toFixed(2))
+  const [isTyping, setTyping] = useState(false)
+
+  const handleChange = (e) => {
+    console.log('Change')
+    setTextValue(e.target.value)
+    if (!isTyping) {
+      let newValue = assertBetween(
+        attributes.min || -Infinity,
+        attributes.max || Infinity,
+        Number(e.target.value)
+      )
+      update(newValue)
+    }
+  }
+
+  const handleKeyDown = () => {
+    console.log('Key down')
+    if (!isTyping) setTyping(true)
+  }
+
+  const handleBlur = (e) => {
+    console.log('Blur')
+    setTyping(false)
+    let newValue = assertBetween(
+      attributes.min || -Infinity,
+      attributes.max || Infinity,
+      Number(e.target.value)
+    )
+    setTextValue(newValue.toFixed(2))
+    update(newValue)
+  }
+
   return <input
     type="number"
     className="num-field"
     name={name}
-    value={value}
-    onChange={update}
+    value={textValue}
+    onKeyDown={handleKeyDown}
+    onChange={handleChange}
+    onBlur={handleBlur}
     step={step}
     {...attributes}
   />

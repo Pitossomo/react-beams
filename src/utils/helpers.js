@@ -1,0 +1,1 @@
+export const assertBetween = (min, max, value) => Math.min(max, Math.max(min, value))

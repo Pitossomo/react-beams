@@ -2,13 +2,6 @@ import { Fragment } from "react"
 import NumberInput from "./NumberInput"
 
 const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
-  const loadProperties = [
-    { name: 'startValue', label: 'Carga inicial' },
-    { name: 'endValue', label: 'Carga final' },
-    { name: 'x0', label: 'Coord. X inicial', attributes: {min: 0} },
-    { name: 'xf', label: 'Coord. X final', attributes: {max: beamParams.length} },
-  ]
-
   return (
     <fieldset name="distributedloads">
       { beamParams.distributedLoads.map((load, loadIndex) => (
@@ -19,21 +12,22 @@ const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
             <NumberInput
               name='startValue'
               value={load.startValue}
-              update={e => updateLoads(loadIndex, 'startValue', e.target.value)}
+              update={newValue => updateLoads(loadIndex, 'startValue', newValue)}
             />
 
             <label>Carga Final</label>
             <NumberInput
               name='endValue'
               value={load.endValue}
-              update={e => updateLoads(loadIndex, 'endValue', e.target.value)}
+              update={newValue => updateLoads(loadIndex, 'endValue', newValue)}
             />
 
             <label>X Inicial</label>
             <NumberInput
               name='x0'
               value={load.x0}
-              update={e => updateLoads(loadIndex, 'x0', e.target.value)}
+              update={newValue => updateLoads(loadIndex, 'x0', newValue)}
+              step={0.01}
               attributes={{min: 0, max: load.xf}}
             />
 
@@ -41,7 +35,8 @@ const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
             <NumberInput
               name='xf'
               value={load.xf}
-              update={e => updateLoads(loadIndex, 'xf', e.target.value)}
+              update={newValue => updateLoads(loadIndex, 'xf', newValue)}
+              step={0.01}
               attributes={{min: load.x0, max: beamParams.length}}
             />
 
