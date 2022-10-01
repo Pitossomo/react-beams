@@ -36,6 +36,16 @@ svg * {
   stroke: lightgray;
 }
 
+.reaction-arrow.up * {
+  stroke: green;
+  fill: green
+}
+
+.reaction-arrow.down * {
+  stroke: red;
+  fill: red;
+}
+
 /*
 .reaction-arrow * {
   fill: none;
