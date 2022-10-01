@@ -95,5 +95,8 @@ aside {
 
 input.num-field {
   width: 40px;
-  margin: 0;
+  margin: 3px;
+  border: 1px solid lightgray;
+  border-bottom: 1px solid black;
+  border-radius: 2px;
 }
