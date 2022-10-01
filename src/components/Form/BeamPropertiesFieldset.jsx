@@ -2,7 +2,7 @@ import { Fragment } from "react"
 
 const BeamPropertiesFieldset = ({beamParams, updateProperty}) => {
   const beamProperties = [
-    { name: 'length', label: 'Comprimento' },
+    { name: 'length', label: 'Comprimento', attributes: {min: 0} },
     { name: 'young', label: 'Módulo de Young - E' },
     { name: 'inertia', label: 'Módulo de Inércia - I' }
   ]

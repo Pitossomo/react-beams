@@ -36,13 +36,11 @@ svg * {
   stroke: lightgray;
 }
 
-.reaction-arrow {
-  stroke: purple;
-}
-
+/*
 .reaction-arrow * {
   fill: none;
 }
+*/
 
 #shearforce-group-svg *:not(text) {
   fill: none;
@@ -74,11 +72,6 @@ aside {
   padding: 4px;
   display: flex;
   flex-direction: column;
-}
-
-input.node-x {
-  width: 40px;
-  margin: 0;
 }
 
 input.num-field {
