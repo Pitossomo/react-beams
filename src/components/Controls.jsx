@@ -1,25 +1,27 @@
 const Controls = ({viewMode, pointerCoordinates, updateViewMode}) => (
   <aside>
     <div>
-      <label>View Mode</label>
+      <label>Modo de visão</label>
       <select name="view-mode" value={viewMode} className="view-mode-selector" onChange={e => updateViewMode(e.target.value)}>
-        <option value="LOADS">Loads</option>
-        <option value="REACTIONS">Reactions</option>
-        <option value="SHEAR">Shear Force</option>
-        <option value="MOMENTS">Bending Moment</option>
+        <option value="LOADS">Cargas na Viga</option>
+        <option value="REACTIONS">Reações nos Apoios</option>
+        <option value="SHEAR">Diagrama de Esforço Contante</option>
+        <option value="MOMENTS">Diagrama de Momento Fletor</option>
       </select>
     </div>
-    <div>
-      <strong id="x-label">X: </strong>
-      <span id="x-value">
-        { pointerCoordinates ? pointerCoordinates.x.toFixed(2).toLocaleString() : "-"}
-      </span>
-    </div>
-    <div>
-      <strong id="y-label">Value in x: </strong>
-      <span id="y-value">
-        { pointerCoordinates ? pointerCoordinates.y.toFixed(2).toLocaleString() : "-"}
-      </span>
+    <div class="coordinates-wrapper">
+      <div>
+        <strong id="x-label">x =</strong>
+        <span id="x-value">
+          { pointerCoordinates ? pointerCoordinates.x.toFixed(2).toLocaleString() : "-"}
+        </span>
+      </div>
+      <div>
+        <strong id="y-label">Value in x =</strong>
+        <span id="y-value">
+          { pointerCoordinates ? pointerCoordinates.y.toFixed(2).toLocaleString() : "-"}
+        </span>
+      </div>
     </div>
   </aside>
 )
