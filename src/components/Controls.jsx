@@ -9,7 +9,7 @@ const Controls = ({viewMode, pointerCoordinates, updateViewMode}) => (
         <option value="MOMENTS">Diagrama de Momento Fletor</option>
       </select>
     </div>
-    <div class="coordinates-wrapper">
+    <div className="coordinates-wrapper">
       <div>
         <strong id="x-label">x =</strong>
         <span id="x-value">

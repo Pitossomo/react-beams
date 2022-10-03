@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { assertBetween } from "../../utils/helpers"
 
 const NumberInput = ({name, value, update, step, attributes = {}}) => {
@@ -15,6 +15,8 @@ const NumberInput = ({name, value, update, step, attributes = {}}) => {
         Number(e.target.value)
       )
       update(newValue)
+    } else {
+      setTextValue(e.target.value)
     }
   }
 
