@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { assertBetween } from "../../utils/helpers"
 
 const NumberInput = ({name, value, update, step, attributes = {}}) => {
-  const [textValue, setTextValue] = useState(value.toFixed(2))
+  const [textValue, setTextValue] = useState(value.toFixed(2).toLocaleString())
   const [isTyping, setTyping] = useState(false)
 
   const handleChange = (e) => {
@@ -33,7 +33,7 @@ const NumberInput = ({name, value, update, step, attributes = {}}) => {
       attributes.max || Infinity,
       Number(e.target.value)
     )
-    setTextValue(newValue.toFixed(2))
+    setTextValue(newValue.toFixed(2).toLocaleString())
     update(newValue)
   }
 
