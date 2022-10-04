@@ -114,6 +114,26 @@ nav * {
   display: block;
 }
 
+.supports {
+  display: flex
+}
+
+.show-on-hover {
+  content: "x";
+  visibility: hidden;
+  padding: 3px;
+  font-size: 0.8em;
+  background-color: coral;
+  color: white;
+  text-decoration: none;
+  margin-left: -5px;
+  border: 0;
+}
+
+.support-wrapper:hover .show-on-hover {
+  visibility: visible;
+}
+
 input.num-field {
   width: 60px;
   text-align: right;

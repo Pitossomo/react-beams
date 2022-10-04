@@ -9,6 +9,13 @@ const SupportsFieldset = ({beamParams, updateSupports}) => {
     updateSupports(newSupports)
   }
 
+  function removeSupport(index, event) {
+    event.preventDefault()
+    const newSupports = [...beamParams.supports]
+    newSupports.splice(index, 1)
+    updateSupports(newSupports)
+  }
+
   return (
     <fieldset name="supports" className="supports">
       <legend>Apoios - Coordenadas X</legend>
@@ -21,15 +28,16 @@ const SupportsFieldset = ({beamParams, updateSupports}) => {
           ? beamParams.supports[index+1] - STEP
           : beamParams.length  
 
-        return (
-          <NumberInput key={`support${index}`}
+        return <div className='support-wrapper' key={`support${index}`}>
+          <NumberInput
             name="support[]"
             step={STEP}
             value={supportX}
             update={newValue => handleSupportChange(newValue, index)}
             attributes={attributes}
           />
-        )
+          <button onClick={e => removeSupport(index, e)} className="show-on-hover">✖</button>
+        </div>
       })}
     </fieldset>
   )
