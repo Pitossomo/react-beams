@@ -123,12 +123,14 @@ nav * {
   visibility: hidden;
   padding: 3px;
   font-size: 0.8em;
-  background-color: coral;
   color: white;
   text-decoration: none;
   margin-left: -5px;
   border: 0;
 }
+
+.red { background-color: coral; }
+.gray { background-color: gray; }
 
 .support-wrapper:hover .show-on-hover {
   visibility: visible;
@@ -138,6 +140,7 @@ input.num-field {
   width: 60px;
   text-align: right;
   margin: 3px;
+  padding-right: 0;
   border: 1px solid lightgray;
   border-bottom: 1px solid black;
   border-radius: 2px;

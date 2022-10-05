@@ -9,11 +9,13 @@ const SupportsFieldset = ({beamParams, updateSupports}) => {
     updateSupports(newSupports)
   }
 
-  function removeSupport(index, event) {
+  function handleRemove(index, event) {
     event.preventDefault()
-    const newSupports = [...beamParams.supports]
-    newSupports.splice(index, 1)
-    updateSupports(newSupports)
+    if (beamParams.supports.length > 2) {
+      const newSupports = [...beamParams.supports]
+      newSupports.splice(index, 1)
+      updateSupports(newSupports)  
+    }
   }
 
   return (
@@ -36,7 +38,12 @@ const SupportsFieldset = ({beamParams, updateSupports}) => {
             update={newValue => handleSupportChange(newValue, index)}
             attributes={attributes}
           />
-          <button onClick={e => removeSupport(index, e)} className="show-on-hover">✖</button>
+          <button 
+            onClick={e => handleRemove(index, e)} 
+            className={`show-on-hover ${beamParams.supports.length > 2 ? 'red' : 'gray'}`}
+          >
+            ✖
+          </button>
         </div>
       })}
     </fieldset>

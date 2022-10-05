@@ -1,19 +1,23 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { assertBetween } from "../../utils/helpers"
 
 const NumberInput = ({name, value, update, step, attributes = {}}) => {
-  const [textValue, setTextValue] = useState(value.toFixed(2).toLocaleString())
+  const [textValue, setTextValue] = useState(value.toLocaleString())
   const [isTyping, setTyping] = useState(false)
+
+  useEffect(() => {
+    setTextValue(value.toLocaleString()) 
+  }, [value])
 
   const handleChange = (e) => {
     console.log('Change')
-    setTextValue(e.target.value)
     if (!isTyping) {
       let newValue = assertBetween(
         attributes.min || -Infinity,
         attributes.max || Infinity,
-        Number(e.target.value)
+        e.target.value
       )
+      setTextValue(e.target.value.toLocaleString())
       update(newValue)
     } else {
       setTextValue(e.target.value)
@@ -31,9 +35,9 @@ const NumberInput = ({name, value, update, step, attributes = {}}) => {
     let newValue = assertBetween(
       attributes.min || -Infinity,
       attributes.max || Infinity,
-      Number(e.target.value)
+      e.target.value
     )
-    setTextValue(newValue.toFixed(2).toLocaleString())
+    setTextValue(newValue.toLocaleString())
     update(newValue)
   }
 
