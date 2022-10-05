@@ -22,10 +22,8 @@ const SupportsFieldset = ({beamParams, updateSupports}) => {
   function handleAddSupport(event) {
     event.preventDefault()
     let newValue = beamParams.length
-    let i = beamParams.supports.length - 1
-    while (i >= 0 && beamParams.supports[i] === newValue) {
+    while (beamParams.supports.includes(newValue)) {
       newValue += ADD_STEP
-      i--
     }
     if (newValue < 0) return
     updateSupports([
