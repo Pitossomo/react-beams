@@ -1,3 +1,5 @@
+import { format, NUMBER_FORMAT } from "../utils/helpers"
+
 const Controls = ({viewMode, pointerCoordinates, updateViewMode}) => {
   const LABELS = {
     'SHEAR': 'Esforço cortante',
@@ -19,13 +21,13 @@ const Controls = ({viewMode, pointerCoordinates, updateViewMode}) => {
         <div>
           <strong id="x-label">x =</strong>
           <span id="x-value">
-            { pointerCoordinates ? pointerCoordinates.x.toFixed(2).toLocaleString() : "-"}
+            { pointerCoordinates ? NUMBER_FORMAT.format(pointerCoordinates.x) : "-"}
           </span>
         </div>
         <div>
           <strong id="y-label">{LABELS[viewMode] || 'Valor'}=</strong>
           <span id="y-value">
-            { pointerCoordinates ? pointerCoordinates.y.toFixed(2).toLocaleString() : "-"}
+            { pointerCoordinates ? NUMBER_FORMAT.format(pointerCoordinates.y) : "-"}
           </span>
         </div>
       </div>
