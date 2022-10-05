@@ -136,6 +136,16 @@ nav * {
   visibility: visible;
 }
 
+.addButton {
+  background-color: limegreen;
+  font-size: 1em;
+  font-weight: bolder;
+  color: white;
+  text-decoration: none;
+  margin-left: 5px;
+  border: 0;
+}
+
 input.num-field {
   width: 60px;
   text-align: right;

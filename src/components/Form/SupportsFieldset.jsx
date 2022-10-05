@@ -2,6 +2,7 @@ import NumberInput from "./NumberInput"
 
 const SupportsFieldset = ({beamParams, updateSupports}) => {
   const STEP = 0.01
+  const ADD_STEP = -0.50
 
   function handleSupportChange(value, index) {
     const newSupports = [...beamParams.supports]
@@ -16,6 +17,21 @@ const SupportsFieldset = ({beamParams, updateSupports}) => {
       newSupports.splice(index, 1)
       updateSupports(newSupports)  
     }
+  }
+
+  function handleAddSupport(event) {
+    event.preventDefault()
+    let newValue = beamParams.length
+    let i = beamParams.supports.length - 1
+    while (i >= 0 && beamParams.supports[i] === newValue) {
+      newValue += ADD_STEP
+      i--
+    }
+    if (newValue < 0) return
+    updateSupports([
+      ...beamParams.supports,
+      newValue
+    ])
   }
 
   return (
@@ -46,6 +62,9 @@ const SupportsFieldset = ({beamParams, updateSupports}) => {
           </button>
         </div>
       })}
+      <button onClick={handleAddSupport} className='addButton'>
+        +
+      </button>
     </fieldset>
   )
 }

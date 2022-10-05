@@ -1,4 +1,4 @@
-import { format, NUMBER_FORMAT } from "../utils/helpers"
+import { NUMBER_FORMAT } from "../utils/helpers"
 
 const Controls = ({viewMode, pointerCoordinates, updateViewMode}) => {
   const LABELS = {
