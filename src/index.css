@@ -129,7 +129,7 @@ nav * {
   border: 0;
 }
 
-.red { background-color: coral; }
+.red { background-color: #ff6666; }
 .gray { background-color: gray; }
 
 .support-wrapper:hover .show-on-hover {
@@ -137,14 +137,23 @@ nav * {
 }
 
 .addButton {
-  background-color: limegreen;
+  background-color: #66ff99;
   font-size: 1em;
   font-weight: bolder;
   color: white;
   text-decoration: none;
-  margin-left: 5px;
   border: 0;
 }
+
+.addButton.small {
+  margin-left: 5px;
+}
+
+.addButton.big {
+  margin: 3px;
+  width: calc(100% - 2*3px);
+}
+
 
 input.num-field {
   width: 60px;

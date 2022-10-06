@@ -2,31 +2,54 @@ import { Fragment } from "react"
 import NumberInput from "./NumberInput"
 
 const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
+  function updateLoad (loadIndex, propertyName, newValue) {
+    const newDistributedLoads = [...beamParams.distributedLoads]
+    newDistributedLoads[loadIndex] = {...(newDistributedLoads[loadIndex])}
+    newDistributedLoads[loadIndex][propertyName] = Number(newValue)
+    updateLoads(newDistributedLoads)
+  }
+
+  const handleAddLoad = (event) => {
+    event.preventDefault()
+    const newLoads = [...beamParams.distributedLoads]
+    
+    const lastLoad = beamParams.distributedLoads[beamParams.distributedLoads.length - 1]
+    const lastXf = lastLoad?.xf || 0 
+    
+    newLoads.push({
+      startValue: 5,
+      endValue: 10,
+      x0: lastXf < beamParams.length ? lastXf : 0,
+      xf: beamParams.length
+    })
+    updateLoads(newLoads)
+  }
+
   return (
     <fieldset name="distributedloads">
+      <legend>Cargas Distribuídas</legend>
       { beamParams.distributedLoads.map((load, loadIndex) => (
         <Fragment key={`load${loadIndex}`}>
-          <legend>Cargas Distribuídas</legend>
           <fieldset name="distributedload" className="distributedloads">
             <label>Carga Inicial</label>
             <NumberInput
               name='startValue'
               value={load.startValue}
-              update={newValue => updateLoads(loadIndex, 'startValue', newValue)}
+              update={newValue => updateLoad(loadIndex, 'startValue', newValue)}
             />
 
             <label>Carga Final</label>
             <NumberInput
               name='endValue'
               value={load.endValue}
-              update={newValue => updateLoads(loadIndex, 'endValue', newValue)}
+              update={newValue => updateLoad(loadIndex, 'endValue', newValue)}
             />
 
             <label>X Inicial</label>
             <NumberInput
               name='x0'
               value={load.x0}
-              update={newValue => updateLoads(loadIndex, 'x0', newValue)}
+              update={newValue => updateLoad(loadIndex, 'x0', newValue)}
               step={0.01}
               attributes={{min: 0, max: load.xf}}
             />
@@ -35,14 +58,15 @@ const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
             <NumberInput
               name='xf'
               value={load.xf}
-              update={newValue => updateLoads(loadIndex, 'xf', newValue)}
+              update={newValue => updateLoad(loadIndex, 'xf', newValue)}
               step={0.01}
               attributes={{min: load.x0, max: beamParams.length}}
             />
-
           </fieldset>
         </Fragment>
       ))}
+      <button onClick={handleAddLoad} className='addButton big'> + </button> 
+
     </fieldset>
   )
 }

@@ -4,8 +4,8 @@ import TextSVG from "./TextSVG"
 
 const LoadsSVG = ({isBlurred, punctualLoads, distributedLoads}) => (
   <g className={isBlurred ? 'blurred' : ''} id="distributed-loads-group-svg">
-    { distributedLoads.map((load, index) => (
-      <Fragment key={`distLoad${index}`}>
+    { distributedLoads.map((load, index) => {
+      return <Fragment key={`distLoad${index}`}>
         <polygon points={
           `${load.x0},${-SVG_OFFSET} `+
           `${load.xf},${-SVG_OFFSET} `+
@@ -27,7 +27,7 @@ const LoadsSVG = ({isBlurred, punctualLoads, distributedLoads}) => (
           />
         ) : null }
       </Fragment>
-    ))}
+    })}
   </g>
 )
 

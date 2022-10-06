@@ -60,9 +60,7 @@ const SupportsFieldset = ({beamParams, updateSupports}) => {
           </button>
         </div>
       })}
-      <button onClick={handleAddSupport} className='addButton'>
-        +
-      </button>
+      <button onClick={handleAddSupport} className='addButton small'> + </button> 
     </fieldset>
   )
 }

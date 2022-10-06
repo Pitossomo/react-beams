@@ -54,15 +54,12 @@ function App() {
     recalculate(newBeamParams)
   }
   
-  function updateLoads (loadIndex, propertyName, newValue) {
-    const newDistributedLoads = [...beamParams.distributedLoads]
-    newDistributedLoads[loadIndex] = {...(newDistributedLoads[loadIndex])}
-    newDistributedLoads[loadIndex][propertyName] = Number(newValue)
+  function updateLoads (newDistributedLoads) {
     const newBeamParams = {...beamParams, distributedLoads: newDistributedLoads}
     setBeamParams(newBeamParams)
     recalculate(newBeamParams)
   }
-  
+
   function recalculate(params) {
     const nodes = Node.createFixNodes(params.supports)
     console.log(params.supports)

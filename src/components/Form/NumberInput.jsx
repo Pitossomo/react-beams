@@ -10,27 +10,29 @@ const NumberInput = ({name, value, update, step, attributes = {}}) => {
   }, [value])
 
   const handleChange = (e) => {
-    console.log('Change')
     if (!isTyping) {
       let newValue = assertBetween(
         attributes.min || -Infinity,
         attributes.max || Infinity,
         Number(e.target.value)
       )
-      setTextValue(format(e.target.value))
+      setTextValue(format(Number(e.target.value)))
       update(newValue)
     } else {
       setTextValue(e.target.value)
     }
   }
 
-  const handleKeyDown = () => {
-    console.log('Key down')
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      if (isTyping) setTyping(false)
+    }
+    
     if (!isTyping) setTyping(true)
   }
 
   const handleBlur = (e) => {
-    console.log('Blur')
     setTyping(false)
     let newValue = assertBetween(
       attributes.min || -Infinity,
