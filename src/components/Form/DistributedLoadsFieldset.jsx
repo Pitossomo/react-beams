@@ -1,4 +1,3 @@
-import { Fragment } from "react"
 import NumberInput from "./NumberInput"
 
 const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
@@ -25,11 +24,19 @@ const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
     updateLoads(newLoads)
   }
 
+  const handleRemoveLoad = (index, event) => {
+    event.preventDefault()
+    const newLoads = [...beamParams.distributedLoads]
+    newLoads.splice(index, 1)
+
+    updateLoads(newLoads)
+  }
+
   return (
     <fieldset name="distributedloads">
       <legend>Cargas Distribuídas</legend>
       { beamParams.distributedLoads.map((load, loadIndex) => (
-        <Fragment key={`load${loadIndex}`}>
+        <div key={`load${loadIndex}`} className='load-fieldset hover-wrapper'>
           <fieldset name="distributedload" className="distributedloads">
             <label>Carga Inicial</label>
             <NumberInput
@@ -63,7 +70,13 @@ const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
               attributes={{min: load.x0, max: beamParams.length}}
             />
           </fieldset>
-        </Fragment>
+          <button 
+            onClick={e => handleRemoveLoad(loadIndex, e)} 
+            className='show-on-hover red'
+          >
+            ✖
+          </button>
+        </div>
       ))}
       <button onClick={handleAddLoad} className='addButton big'> + </button> 
 

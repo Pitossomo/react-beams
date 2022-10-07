@@ -118,6 +118,11 @@ nav * {
   display: flex
 }
 
+.load-fieldset {
+  display: flex;
+  margin-bottom: 5px;
+}
+
 .show-on-hover {
   content: "x";
   visibility: hidden;
@@ -132,7 +137,7 @@ nav * {
 .red { background-color: #ff6666; }
 .gray { background-color: gray; }
 
-.support-wrapper:hover .show-on-hover {
+.hover-wrapper:hover .show-on-hover {
   visibility: visible;
 }
 

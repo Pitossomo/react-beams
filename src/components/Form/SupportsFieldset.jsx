@@ -44,7 +44,7 @@ const SupportsFieldset = ({beamParams, updateSupports}) => {
           ? beamParams.supports[index+1] - STEP
           : beamParams.length  
 
-        return <div className='support-wrapper' key={`support${index}`}>
+        return <div className='hover-wrapper' key={`support${index}`}>
           <NumberInput
             name="support[]"
             step={STEP}
