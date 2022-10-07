@@ -70,16 +70,17 @@ const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
               attributes={{min: load.x0, max: beamParams.length}}
             />
           </fieldset>
+          {/*
           <button 
             onClick={e => handleRemoveLoad(loadIndex, e)} 
             className='show-on-hover red'
           >
             ✖
           </button>
+          */}
         </div>
       ))}
-      <button onClick={handleAddLoad} className='addButton big'> + </button> 
-
+      {/*<button onClick={handleAddLoad} className='addButton big'> + </button>*/}
     </fieldset>
   )
 }

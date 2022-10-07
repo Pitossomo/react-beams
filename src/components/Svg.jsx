@@ -1,5 +1,5 @@
 import HighlightLine from "./Svg/HighlightLineSVG";
-import SvgElements from "./Svg/SvgElements";
+import SvgResults from "./Svg/SvgResults";
 
 const Svg = ({svgRef, viewMode, beamParams, results, pointerCoordinates, updatePointerCoordinates}) => {
   const ICON_HEIGHT = '24px'
@@ -32,7 +32,7 @@ const Svg = ({svgRef, viewMode, beamParams, results, pointerCoordinates, updateP
             <use key={support} href="#support-def-svg" x={support} />
           ))}
         </g>
-        <SvgElements viewMode={viewMode} beamParams={beamParams} results={results} />
+        <SvgResults viewMode={viewMode} beamParams={beamParams} results={results} />
         <HighlightLine viewMode={viewMode} pointerCoordinates={pointerCoordinates} />
       </g>  
     </svg>

@@ -3,7 +3,7 @@ import { OFFSET_DX, SMALL_DX, SVG_OFFSET, SVG_Y_SCALE } from "../../utils/consta
 import LoadsSVG from "./LoadsSVG"
 import TextSVG from "./TextSVG"
 
-const SvgElements = ({viewMode, beamParams, results}) => {
+const SvgResults = ({viewMode, beamParams, results}) => {
   const DrawLoads = ({isBlurred}) => (
     <LoadsSVG 
       distributedLoads={beamParams.distributedLoads}
@@ -60,10 +60,11 @@ const SvgElements = ({viewMode, beamParams, results}) => {
       let extremeValues = []
       let momentPath = `M${SMALL_DX} 0 `
       for (let x = 0; x <= beamParams.length; x += OFFSET_DX) {
-        let momentX = results.bendingMoment(x)
+        let momentX = Math.round(results.bendingMoment(x)*100)/100
         momentPath += `L${x} ${momentX*SVG_Y_SCALE} `
         if (
-          Math.abs(previousValues["Mx-2"]) < Math.abs(previousValues["Mx-1"]) 
+          momentX && previousValues["Mx-1"] && previousValues["Mx-2"]
+          && Math.abs(previousValues["Mx-2"]) < Math.abs(previousValues["Mx-1"]) 
           && Math.abs(momentX) < Math.abs(previousValues["Mx-1"])
         ) extremeValues.push({x: previousValues["x-1"], value: previousValues["Mx-1"]})
 
@@ -106,4 +107,4 @@ const SvgElements = ({viewMode, beamParams, results}) => {
   }
 }
 
-export default SvgElements
+export default SvgResults
