@@ -1,4 +1,4 @@
-import { Beam, DistributedLoad, Node } from "beamsjs"
+import { Beam, DistributedLoad, Node, PunctualLoad } from "beamsjs"
 import Svg from "./components/Svg"
 import BeamForm from "./components/BeamForm"
 import Controls from "./components/Controls"
@@ -16,10 +16,7 @@ function App() {
       x0: 0,
       xf: 10 
     }],
-    punctualLoads: [{
-      value: 10,
-      x: 5
-    }]
+    punctualLoads: []
   })
 
   const svgRef = useRef()
@@ -80,8 +77,17 @@ function App() {
       new DistributedLoad(load.startValue, load.endValue, load.x0, load.xf)
     ))
 
+    const punctualLoads = params.punctualLoads.map(load => (
+      new PunctualLoad(load.value, load.x)
+    ))
+
     setPointerCoordinates()
-    setResults(new Beam(nodes, distributedLoads))
+    setResults(new Beam(
+      nodes,
+      distributedLoads,
+      punctualLoads,
+      beamParams.young*beamParams.inertia
+    ))
   }
 
   function updatePointerCoordinates ({clientX, clientY}) {
