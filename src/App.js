@@ -1,4 +1,4 @@
-import { Beam, DistributedLoad, Node, PunctualLoad } from "beamsjs"
+import { Beam, DistributedLoad, Node } from "beamsjs"
 import Svg from "./components/Svg"
 import BeamForm from "./components/BeamForm"
 import Controls from "./components/Controls"
@@ -15,6 +15,10 @@ function App() {
       endValue: 10,
       x0: 0,
       xf: 10 
+    }],
+    punctualLoads: [{
+      value: 10,
+      x: 5
     }]
   })
 
@@ -54,8 +58,14 @@ function App() {
     recalculate(newBeamParams)
   }
   
-  function updateLoads (newDistributedLoads) {
+  function updateDistributedLoads (newDistributedLoads) {
     const newBeamParams = {...beamParams, distributedLoads: newDistributedLoads}
+    setBeamParams(newBeamParams)
+    recalculate(newBeamParams)
+  }
+
+  function updatePunctualLoads (newPunctualLoads) {
+    const newBeamParams = {...beamParams, punctualLoads: newPunctualLoads}
     setBeamParams(newBeamParams)
     recalculate(newBeamParams)
   }
@@ -116,7 +126,8 @@ function App() {
       <BeamForm
         beamParams={beamParams}
         setBeamParams={setBeamParams}
-        updateLoads={updateLoads}
+        updateDistributedLoads={updateDistributedLoads}
+        updatePunctualLoads={updatePunctualLoads}
         updateProperty={updateProperty}
         updateSupports={updateSupports}
       />
