@@ -69,7 +69,6 @@ function App() {
 
   function recalculate(params) {
     const nodes = Node.createFixNodes(params.supports)
-    console.log(params.supports)
     if (nodes[0].x > 0) nodes.unshift({x: 0, yFix: false})
     if (nodes[nodes.length - 1].x < params.length) nodes.push({x: params.length, yFix: false})
     

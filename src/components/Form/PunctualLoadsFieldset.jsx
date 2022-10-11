@@ -12,8 +12,8 @@ const PunctualLoadsFieldset = ({beamParams, updateLoads}) => {
     event.preventDefault()
     const newLoads = [...beamParams.punctualLoads]
     newLoads.push({
-      value: 10,
-      x: Math.random()*beamParams.length,
+      value: Math.round(Math.min(Math.round(Math.random()*10,1)*100))/100,
+      x: Math.round(Math.random()*beamParams.length*100)/100,
     })
     updateLoads(newLoads)
   }
@@ -27,25 +27,28 @@ const PunctualLoadsFieldset = ({beamParams, updateLoads}) => {
   }
 
   return (
-    <fieldset name="punctualloads">
-      <legend>Cargas Pontuais</legend>
+    <fieldset className="punctual-loads-fieldset">
+      <legend>Carregamentos Pontuais</legend>
       { beamParams.punctualLoads.map((load, loadIndex) => (
-        <div key={`pload${loadIndex}`} className='load-fieldset hover-wrapper'>
-          <fieldset name="punctualload" className="punctualloads">
-            <label>Carga</label>
-            <NumberInput
-              name='value'
-              value={load.value}
-              update={newValue => updateLoad(loadIndex, 'value', newValue)}
-            />
-
-            <label>X:</label>
-            <NumberInput
-              name='x'
-              value={load.x}
-              update={newValue => updateLoad(loadIndex, 'x', newValue)}
-              step='0.01'
-            />
+        <div key={`pload${loadIndex}`} className='punctual-load hover-wrapper'>
+          <fieldset name="punctualload" className="punctual-load-fieldset">
+            <div>
+              <label>Carga:</label>
+              <NumberInput
+                name='value'
+                value={load.value}
+                update={newValue => updateLoad(loadIndex, 'value', newValue)}
+              />
+            </div>
+            <div>
+              <label>X:</label>
+              <NumberInput
+                name='x'
+                value={load.x}
+                update={newValue => updateLoad(loadIndex, 'x', newValue)}
+                step='0.01'
+              />
+            </div>            
           </fieldset>
           <button 
             onClick={e => handleRemoveLoad(loadIndex, e)} 
@@ -55,7 +58,7 @@ const PunctualLoadsFieldset = ({beamParams, updateLoads}) => {
           </button>
         </div>
       ))}
-      <button onClick={handleAddLoad} className='addButton small'> + </button>
+      <button onClick={handleAddLoad} className='addButton big'> + </button>
     </fieldset>
   )
 }

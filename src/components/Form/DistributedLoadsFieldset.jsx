@@ -34,7 +34,7 @@ const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
 
   return (
     <fieldset name="distributedloads">
-      <legend>Cargas Distribuídas</legend>
+      <legend>Carregamentos Distribuídos</legend>
       { beamParams.distributedLoads.map((load, loadIndex) => (
         <div key={`load${loadIndex}`} className='load-fieldset hover-wrapper'>
           <fieldset name="distributedload" className="distributedloads">

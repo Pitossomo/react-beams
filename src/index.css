@@ -15,12 +15,11 @@ body {
 .svg-wrapper {
   display: flex;
   flex-direction: column;
-  margin: 30px;
+  margin: 8px;
 }
 
 svg { 
   background-color: lightgray;
-  width: 90vw;
   max-width: 1000px;
   height: 60vh;
   z-index: 1;
@@ -121,13 +120,32 @@ nav * {
   display: block;
 }
 
+.beam-form {
+  width: inherit;
+}
+
 .supports {
   display: flex
 }
 
 .load-fieldset {
   display: flex;
+  flex-direction: row;
   margin-bottom: 5px;
+}
+
+.punctual-loads {
+  display: flex;
+}
+
+.punctual-load {
+  display: flex;
+  margin-bottom: 5px;
+  flex: 1 0 50%;
+}
+
+.punctual-load-fieldset {
+  display: flex;
 }
 
 .show-on-hover {

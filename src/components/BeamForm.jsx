@@ -10,9 +10,9 @@ const BeamForm = ({beamParams, updateProperty, updatePunctualLoads, updateDistri
 
       <SupportsFieldset beamParams={beamParams} updateSupports={updateSupports}/>
 
-      <PunctualLoadsFieldset beamParams={beamParams} updateLoads={updatePunctualLoads} />
-
       <DistributedLoadsFieldset beamParams={beamParams} updateLoads={updateDistributedLoads} />
+
+      <PunctualLoadsFieldset beamParams={beamParams} updateLoads={updatePunctualLoads} />
     </form>
   )
 }
