@@ -11,13 +11,9 @@ const PunctualLoadsFieldset = ({beamParams, updateLoads}) => {
   const handleAddLoad = (event) => {
     event.preventDefault()
     const newLoads = [...beamParams.punctualLoads]
-    
-    const lastLoad = beamParams.punctualLoads[beamParams.punctualLoads.length - 1]
-    const lastXf = lastLoad?.xf || 0 
-    
     newLoads.push({
-      value: beamParams.punctualLoads.length + 1,
-      x: lastXf < beamParams.length ? lastXf : 0,
+      value: 10,
+      x: Math.random()*beamParams.length,
     })
     updateLoads(newLoads)
   }
@@ -48,6 +44,7 @@ const PunctualLoadsFieldset = ({beamParams, updateLoads}) => {
               name='x'
               value={load.x}
               update={newValue => updateLoad(loadIndex, 'x', newValue)}
+              step='0.01'
             />
           </fieldset>
           <button 
