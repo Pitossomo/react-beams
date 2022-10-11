@@ -1,34 +1,40 @@
 import { Fragment } from "react"
 import { SVG_OFFSET, SVG_Y_SCALE } from "../../utils/constants"
+import PunctualLoadSVG from "./PunctualLoadSVG"
 import TextSVG from "./TextSVG"
 
-const LoadsSVG = ({isBlurred, punctualLoads, distributedLoads}) => (
+const LoadsSVG = ({isBlurred, punctualLoads, distributedLoads}) => <>
   <g className={isBlurred ? 'blurred' : ''} id="distributed-loads-group-svg">
-    { distributedLoads.map((load, index) => {
-      return <Fragment key={`distLoad${index}`}>
+    { distributedLoads.map(({x0, xf, endValue, startValue}, index) => (
+      <Fragment key={`distLoad${index}`}>
         <polygon points={
-          `${load.x0},${-SVG_OFFSET} `+
-          `${load.xf},${-SVG_OFFSET} `+
-          `${load.xf},${-load.endValue*SVG_Y_SCALE-SVG_OFFSET} `+
-          `${load.x0},${-load.startValue*SVG_Y_SCALE-SVG_OFFSET}`
+          `${x0},${-SVG_OFFSET} `+
+          `${xf},${-SVG_OFFSET} `+
+          `${xf},${-endValue*SVG_Y_SCALE-SVG_OFFSET} `+
+          `${x0},${-startValue*SVG_Y_SCALE-SVG_OFFSET}`
         }/>
         <TextSVG
-          x={load.x0}
-          y={-load.startValue*SVG_Y_SCALE}
-          content={load.startValue}
+          x={x0}
+          y={-startValue*SVG_Y_SCALE}
+          content={startValue}
           anchor='end'
         />
-        { load.startValue !== load.endValue ? (
+        { startValue !== endValue ? (
           <TextSVG 
-            x={load.xf}
-            y={-load.endValue*SVG_Y_SCALE}
-            content={load.endValue}
+            x={xf}
+            y={-endValue*SVG_Y_SCALE}
+            content={endValue}
             anchor='start'
           />
         ) : null }
       </Fragment>
-    })}
+    ))}
   </g>
-)
+  <g className={isBlurred ? 'blurred' : ''} id="punctual-loads-group-svg">
+    { punctualLoads.map(({value, x}, index) => (
+      <PunctualLoadSVG key={`pLoad${index}`} value={value} x={x} />
+    ))}
+  </g>
+</>
 
 export default LoadsSVG

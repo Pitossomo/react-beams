@@ -35,13 +35,20 @@ svg * {
   fill: url(#vertical-lines-pattern)
 }
 
+#punctual-loads-group-svg.blurred *,
 #distributed-loads-group-svg.blurred * {
   stroke: gray;
   stroke-width: 0.1%;
 }
 
+#punctual-loads-group-svg.blurred text,
 #distributed-loads-group-svg.blurred text {
   stroke: lightgray;
+}
+
+.blurred .load-arrow {
+  stroke: gray;
+  fill: gray;
 }
 
 .reaction-arrow.up * {
