@@ -11,13 +11,13 @@ const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
   const handleAddLoad = (event) => {
     event.preventDefault()
     const newLoads = [...beamParams.distributedLoads]
-    
+
     const lastLoad = beamParams.distributedLoads[beamParams.distributedLoads.length - 1]
     const lastXf = lastLoad?.xf || 0 
-    
+
     newLoads.push({
-      startValue: 5,
-      endValue: 10,
+      startValue: Math.round(Math.random()*10*100)/100,
+      endValue: Math.round(Math.random()*10)/100,
       x0: lastXf < beamParams.length ? lastXf : 0,
       xf: beamParams.length
     })

@@ -5,18 +5,22 @@ import Controls from "./components/Controls"
 import { useRef, useState } from "react"
 
 function App() {
+  const x0 = Math.random()*2
   const [beamParams, setBeamParams] = useState({
     length: 10,
     young: 1,
     inertia: 1,
     supports: [0, 3.3, 6.7, 10],
     distributedLoads: [{
-      startValue: 5,
-      endValue: 10,
-      x0: 0,
-      xf: 10 
+      startValue: Math.random()*10,
+      endValue: Math.random()*10,
+      x0: x0,
+      xf: Math.min(x0 + Math.random()*10,10) 
     }],
-    punctualLoads: []
+    punctualLoads: [{
+      value: Math.random()*10,
+      x: Math.random()*10
+    }]
   })
 
   const svgRef = useRef()
