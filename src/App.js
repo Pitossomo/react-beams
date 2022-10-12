@@ -8,8 +8,9 @@ function App() {
   const x0 = Math.random()*2
   const [beamParams, setBeamParams] = useState({
     length: 10,
-    young: 1,
-    inertia: 1,
+    young: 25,
+    width: 0.14,
+    height: 0.30,
     supports: [0, 3.3, 6.7, 10],
     distributedLoads: [{
       startValue: Math.random()*10,
@@ -84,12 +85,14 @@ function App() {
       new PunctualLoad(load.value, load.x)
     ))
 
+    const inertia = beamParams.width*beamParams.height**3/12
+
     setPointerCoordinates()
     setResults(new Beam(
       nodes,
       distributedLoads,
       punctualLoads,
-      beamParams.young*beamParams.inertia
+      beamParams.young*10**9*inertia
     ))
   }
 

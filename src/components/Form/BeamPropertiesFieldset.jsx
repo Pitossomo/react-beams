@@ -2,11 +2,11 @@ import { Fragment } from "react"
 import NumberInput from "./NumberInput"
 
 const BeamPropertiesFieldset = ({beamParams, updateProperty}) => {
-  const STEP = 1
   const beamProperties = [
     { name: 'length', label: 'Comprimento', attributes: {min: 0} },
-    { name: 'young', label: 'Módulo de Young - E', attributes: {min: 0 } },
-    { name: 'inertia', label: 'Módulo de Inércia - I', attributes: {min: 0} }
+    { name: 'young', label: 'Módulo de Young - E (GPa)', attributes: { min: 1 } },
+    { name: 'width', label: 'Largura da viga - b', step: 0.01, attributes: {min: 0.01} },
+    { name: 'height', label: 'Altura da viga - h', step: 0.01, attributes: {min: 0.01} }
   ]
   
   return (
@@ -16,7 +16,7 @@ const BeamPropertiesFieldset = ({beamParams, updateProperty}) => {
           <label>{property.label}</label>
           <NumberInput
             name={property.name}
-            step={STEP}
+            step={property?.step || 1}
             value={beamParams[property.name]}
             update={newValue => updateProperty(property.name, newValue)}
             attributes={property.attributes}
