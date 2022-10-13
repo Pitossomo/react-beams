@@ -1,4 +1,3 @@
-import { Fragment } from "react"
 import NumberInput from "./NumberInput"
 
 const BeamPropertiesFieldset = ({beamParams, updateProperty}) => {

@@ -19,10 +19,10 @@ export function steelAreaInBending(height, width, momentSd, fck, cover) {
       ? [0.85, 0.8] 
       : [0.85 * (1 - (fck - 50) / 200), 0.8 - (fck - 50) / 400]
   
-    const xRoot = (usefulHeight**2 - (2.8 * momentSd) / width / alphac / (fck*100) ) ** 0.5;
+    const xRoot = (usefulHeight**2 - (2.8*momentSd*10) / width / alphac / (fck*100))**0.5;
     const x = (usefulHeight - xRoot) / lamb;
-    const z = usefulHeight - 0.5 * lamb * x;
-    steelArea = (momentSd / z / 5) * 1.15;
+    const z = usefulHeight - 0.5*lamb*x;
+    steelArea = (momentSd / z / 5)*1.15;
     const dom = (x / usefulHeight < 0.259) ? 2 : 3;
   
     // TODO - verifications
