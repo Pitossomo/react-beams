@@ -1,0 +1,49 @@
+@media (max-width: 600px) {
+  body {
+    margin: 0;
+  }
+
+  .svg-wrapper {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+  }
+
+  svg {
+    width: 100vw;
+    padding: 2px;
+  }
+
+  text {
+    font-size: 0.04em;
+  }
+
+  aside {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  aside .coordinates-wrapper {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .beam-form {
+    width: 100vw;
+  }
+
+  .beam-form > * {
+    width: fit-content;
+    border-style: none;
+  }
+
+  .beam-properties,
+  .supports,
+  .load-fieldset,
+  .distributed-loads,
+  .punctual-loads,
+  .punctual-load,
+  .punctual-load-fieldset {
+    flex-direction: column;
+  }
+}

@@ -37,7 +37,7 @@ const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
       <legend>Carregamentos Distribuídos</legend>
       { beamParams.distributedLoads.map((load, loadIndex) => (
         <div key={`load${loadIndex}`} className='load-fieldset hover-wrapper'>
-          <fieldset name="distributedload" className="distributedloads">
+          <fieldset name="distributedload" className="distributed-loads">
             <label>Carga Inicial</label>
             <NumberInput
               name='startValue'

@@ -22,7 +22,6 @@ svg {
   background-color: lightgray;
   width: 90vw;
   max-width: 1000px;
-  height: 60vh;
   z-index: 1;
 }
 
@@ -132,6 +131,10 @@ nav * {
   display: flex;
   flex-direction: row;
   margin-bottom: 5px;
+}
+
+.distributed-loads {
+  display: flex;
 }
 
 .punctual-loads {
