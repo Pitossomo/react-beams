@@ -5,7 +5,7 @@ const Svg = ({svgRef, viewMode, beamParams, results, pointerCoordinates, updateP
   const ICON_HEIGHT = '24px'
   return <>
     <svg id="drawing-area" xmlns="http://www.w3.org/2000/svg"
-      ref={svgRef} viewBox={`${-1} ${-3} ${beamParams.length + 2} ${6}`}
+      ref={svgRef} viewBox={`${-1.5} ${-3} ${beamParams.length + 3} ${6}`}
       onMouseMove={updatePointerCoordinates}
     >      
       <defs>
