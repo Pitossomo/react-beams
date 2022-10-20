@@ -10,6 +10,7 @@ const BeamPropertiesFieldset = ({beamParams, updateProperty}) => {
   
   return (
     <fieldset className="beam-properties">
+      <legend>Propriedades da viga</legend>
       { beamProperties.map(property => (
         <div className='property' key={property.name}>
           <label>{property.label}</label>
