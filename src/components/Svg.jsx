@@ -1,5 +1,9 @@
 import HighlightLine from "./Svg/HighlightLineSVG";
 import SvgResults from "./Svg/SvgResults";
+import dioLogo from "../imgs/dio.svg"
+import githubLogo from "../imgs/github.png"
+import linkedinLogo from "../imgs/linkedin.svg"
+
 
 const Svg = ({svgRef, viewMode, beamParams, results, pointerCoordinates, updatePointerCoordinates}) => {
   const ICON_HEIGHT = '24px'
@@ -40,13 +44,13 @@ const Svg = ({svgRef, viewMode, beamParams, results, pointerCoordinates, updateP
       { /*<span>Desenvolvido por @Pitossomo</span>*/ }
       <a href="https://www.linkedin.com/in/pedrocarvalhoeng/">
         <img height={ICON_HEIGHT}
-          src="https://camo.githubusercontent.com/c8a9c5b414cd812ad6a97a46c29af67239ddaeae08c41724ff7d945fb4c047e5/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f6c696e6b6564696e2e737667"
+          src={linkedinLogo}
         />
       </a>
       <a href="https://github.com/Pitossomo">
         <img height={ICON_HEIGHT} 
-          src="https://camo.githubusercontent.com/4133dc1cd4511d4a292b84ce10e52e4ed92569fb2a8165381c9c47be5edc2796/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f706e672f6769746875622e706e67"
-        />
+          src={githubLogo}
+          />
       </a>
       {
       /*<a href="https://www.instagram.com/pitossomo/">
@@ -57,8 +61,8 @@ const Svg = ({svgRef, viewMode, beamParams, results, pointerCoordinates, updateP
       }
       <a href="https://web.dio.me/users/pedro_h_teles?tab=achievements">
         <img height={ICON_HEIGHT}
-          src="https://hermes.digitalinnovation.one/assets/diome/logo.svg"
-        />
+          src={dioLogo}
+          />
       </a>
     </nav>
   </>
