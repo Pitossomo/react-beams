@@ -123,6 +123,10 @@ nav * {
   display: flex
 }
 
+.property {
+  padding: 0 12px;
+}
+
 .supports {
   display: flex
 }
