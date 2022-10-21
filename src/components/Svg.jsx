@@ -6,7 +6,7 @@ import linkedinLogo from "../imgs/linkedin.svg"
 
 
 const Svg = ({svgRef, viewMode, beamParams, results, pointerCoordinates, updatePointerCoordinates}) => {
-  const ICON_HEIGHT = '24px'
+  const ICON_HEIGHT = '20px'
   return <>
     <svg id="drawing-area" xmlns="http://www.w3.org/2000/svg"
       ref={svgRef} viewBox={`${-1.5} ${-3} ${beamParams.length + 3} ${6}`}

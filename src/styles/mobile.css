@@ -4,7 +4,7 @@
   }
 
   .svg-wrapper {
-    width: 100vw;
+    width: 100%;
     margin: 0;
     padding: 0;
   }
@@ -29,11 +29,9 @@
   }
 
   .beam-form {
-    width: 100vw;
-  }
-
-  .beam-form > * {
-    width: fit-content;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
   }
 
   .beam-properties,

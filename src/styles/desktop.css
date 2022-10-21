@@ -4,6 +4,7 @@ body {
   align-items: center;
   font-family: monospace;
   font-size: 14px;
+  background-color: #f8ffff
 }
 
 .App {
@@ -21,6 +22,7 @@ body {
 svg { 
   background-color: lightgray;
   width: 90vw;
+  box-sizing: border-box;
   max-width: 1000px;
   z-index: 1;
 }
@@ -117,6 +119,26 @@ nav {
 nav * {
   margin: 2px;
   display: block;
+}
+
+.beam-form > * {
+  margin: 8px;
+  padding: 0;
+  border: none;
+  background-color: #fffff8;
+  box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
+}
+
+.beam-form > * > * {
+  padding: 8px;
+}
+
+.beam-form > * > legend {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 12px 8px 12px;
+  background-color: #fffff8;
+  text-decoration: underline;
 }
 
 .beam-properties {
