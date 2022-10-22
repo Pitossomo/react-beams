@@ -206,6 +206,9 @@ nav * {
 
 .addButton.small {
   margin-left: 5px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 
 .addButton.big {

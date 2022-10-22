@@ -51,6 +51,7 @@ const SupportsFieldset = ({beamParams, updateSupports}) => {
             value={supportX}
             update={newValue => handleSupportChange(newValue, index)}
             attributes={attributes}
+            unit={"m"}
           />
           <button 
             onClick={e => handleRemove(index, e)} 
