@@ -38,37 +38,49 @@ const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
       { beamParams.distributedLoads.map((load, loadIndex) => (
         <div key={`load${loadIndex}`} className='load-fieldset hover-wrapper'>
           <fieldset name="distributedload" className="distributed-loads">
-            <label>Carga Inicial</label>
-            <NumberInput
-              name='startValue'
-              value={load.startValue}
-              update={newValue => updateLoad(loadIndex, 'startValue', newValue)}
-            />
+            <div className="input-wrapper">
+              <label>Carga Inicial</label>
+              <NumberInput
+                name='startValue'
+                value={load.startValue}
+                update={newValue => updateLoad(loadIndex, 'startValue', newValue)}
+                unit={'kN/m'}
+              />
+            </div>
 
-            <label>Carga Final</label>
-            <NumberInput
-              name='endValue'
-              value={load.endValue}
-              update={newValue => updateLoad(loadIndex, 'endValue', newValue)}
-            />
+            <div className="input-wrapper">
+              <label>Carga Final</label>
+              <NumberInput
+                name='endValue'
+                value={load.endValue}
+                update={newValue => updateLoad(loadIndex, 'endValue', newValue)}
+                unit={'kN/m'}
+              />
+            </div>
 
-            <label>X Inicial</label>
-            <NumberInput
-              name='x0'
-              value={load.x0}
-              update={newValue => updateLoad(loadIndex, 'x0', newValue)}
-              step={0.01}
-              attributes={{min: 0, max: load.xf}}
-            />
+            <div className="input-wrapper">
+              <label>X Inicial</label>
+              <NumberInput
+                name='x0'
+                value={load.x0}
+                update={newValue => updateLoad(loadIndex, 'x0', newValue)}
+                step={0.01}
+                attributes={{min: 0, max: load.xf}}
+                unit={'m'}
+              />
+            </div>
 
-            <label>X Final</label>
-            <NumberInput
-              name='xf'
-              value={load.xf}
-              update={newValue => updateLoad(loadIndex, 'xf', newValue)}
-              step={0.01}
-              attributes={{min: load.x0, max: beamParams.length}}
-            />
+            <div className="input-wrapper">
+              <label>X Final</label>
+              <NumberInput
+                name='xf'
+                value={load.xf}
+                update={newValue => updateLoad(loadIndex, 'xf', newValue)}
+                step={0.01}
+                attributes={{min: load.x0, max: beamParams.length}}
+                unit={'m'}
+              />
+            </div>
           </fieldset>
           <button 
             onClick={e => handleRemoveLoad(loadIndex, e)} 

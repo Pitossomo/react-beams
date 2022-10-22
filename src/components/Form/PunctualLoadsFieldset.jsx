@@ -38,6 +38,7 @@ const PunctualLoadsFieldset = ({beamParams, updateLoads}) => {
                 name='value'
                 value={load.value}
                 update={newValue => updateLoad(loadIndex, 'value', newValue)}
+                unit={'kN'}
               />
             </div>
             <div>
@@ -47,6 +48,7 @@ const PunctualLoadsFieldset = ({beamParams, updateLoads}) => {
                 value={load.x}
                 update={newValue => updateLoad(loadIndex, 'x', newValue)}
                 step='0.01'
+                unit={'m'}
               />
             </div>            
           </fieldset>

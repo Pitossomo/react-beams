@@ -43,20 +43,22 @@ const NumberInput = ({name, value, update, unit, step, attributes = {}}) => {
     update(newValue)
   }
 
-  return <>
-    <input
-      type="number"
-      className="num-field"
-      name={name}
-      value={textValue}
-      onKeyDown={handleKeyDown}
-      onChange={handleChange}
-      onBlur={handleBlur}
-      step={step}
-      {...attributes}
-    />
-    { unit ? <span>{unit}</span> : null }
-  </>
+  return (
+    <>
+      <input
+        type="number"
+        className="num-field"
+        name={name}
+        value={textValue}
+        onKeyDown={handleKeyDown}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        step={step}
+        {...attributes}
+      />
+      { unit ? <span>{unit}</span> : null }
+    </>
+  )
 }
 
 export default NumberInput

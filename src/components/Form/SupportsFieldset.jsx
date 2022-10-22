@@ -44,22 +44,25 @@ const SupportsFieldset = ({beamParams, updateSupports}) => {
           ? beamParams.supports[index+1] - STEP
           : beamParams.length  
 
-        return <div className='hover-wrapper' key={`support${index}`}>
-          <NumberInput
-            name="support[]"
-            step={STEP}
-            value={supportX}
-            update={newValue => handleSupportChange(newValue, index)}
-            attributes={attributes}
-            unit={"m"}
-          />
-          <button 
-            onClick={e => handleRemove(index, e)} 
-            className={`show-on-hover ${beamParams.supports.length > 2 ? 'red' : 'gray'}`}
-          >
-            ✖
-          </button>
-        </div>
+        return (
+          <div className='input-wrapper hover-wrapper' key={`support${index}`}>
+            <label>Apoio {index+1}</label>
+            <NumberInput
+              name="support[]"
+              step={STEP}
+              value={supportX}
+              update={newValue => handleSupportChange(newValue, index)}
+              attributes={attributes}
+              unit={"m"}
+            />
+            <button 
+              onClick={e => handleRemove(index, e)} 
+              className={`show-on-hover ${beamParams.supports.length > 2 ? 'red' : 'gray'}`}
+            >
+              ✖
+            </button>
+          </div>
+        )
       })}
       <button onClick={handleAddSupport} className='addButton small'> + </button> 
     </fieldset>

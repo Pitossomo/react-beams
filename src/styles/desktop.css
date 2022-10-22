@@ -177,6 +177,10 @@ nav * {
   display: flex;
 }
 
+.input-wrapper {
+  padding: 0 8px;
+}
+
 .show-on-hover {
   content: "x";
   visibility: hidden;
@@ -215,7 +219,6 @@ nav * {
   margin: 3px;
   width: calc(100% - 2*3px);
 }
-
 
 input.num-field {
   width: 60px;
