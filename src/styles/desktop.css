@@ -177,10 +177,6 @@ nav * {
   display: flex;
 }
 
-.input-wrapper {
-  padding: 0 8px;
-}
-
 .show-on-hover {
   content: "x";
   visibility: hidden;
@@ -218,14 +214,4 @@ nav * {
 .addButton.big {
   margin: 3px;
   width: calc(100% - 2*3px);
-}
-
-input.num-field {
-  width: 60px;
-  text-align: right;
-  margin: 3px;
-  padding-right: 0;
-  border: 1px solid lightgray;
-  border-bottom: 1px solid black;
-  border-radius: 2px;
 }

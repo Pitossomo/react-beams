@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { assertBetween, format } from "../../utils/helpers"
+import { assertBetween, format } from "../../../utils/helpers"
+import './style.css'
 
 const NumberInput = ({name, value, update, unit, step, attributes = {}}) => {
   const [textValue, setTextValue] = useState(format(value))
@@ -44,10 +45,9 @@ const NumberInput = ({name, value, update, unit, step, attributes = {}}) => {
   }
 
   return (
-    <>
+    <div className="input-wrapper">
       <input
         type="number"
-        className="num-field"
         name={name}
         value={textValue}
         onKeyDown={handleKeyDown}
@@ -57,7 +57,7 @@ const NumberInput = ({name, value, update, unit, step, attributes = {}}) => {
         {...attributes}
       />
       { unit ? <span>{unit}</span> : null }
-    </>
+    </div>
   )
 }
 

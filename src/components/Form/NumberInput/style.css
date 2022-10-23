@@ -1,0 +1,17 @@
+.input-wrapper {
+  display: inline-block;
+  margin: 4px;
+  padding: 0px;
+  padding-right: 4px;
+  border: 1px solid lightgray;
+  border-bottom: 1px solid black;
+  border-radius: 2px;
+}
+
+input {
+  width: 60px;
+  text-align: right;
+  margin: 0px;
+  padding-right: 0;
+  border: none;
+}
