@@ -33,14 +33,14 @@ const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
   }
 
   return (
-    <fieldset name="distributedloads">
-      <legend>Carregamentos Distribuídos</legend>
+    <fieldset className="card loads-fieldset">
+      <strong>Carregamentos Distribuídos</strong>
       { beamParams.distributedLoads.map((load, loadIndex) => (
-        <div key={`load${loadIndex}`} className='load-fieldset hover-wrapper'>
-          <fieldset name="distributedload" className="distributed-loads">
-            <div className="input-wrapper">
-              <label>Carga Inicial</label>
+        <div key={`load${loadIndex}`} className='distributed-load hover-wrapper'>
+          <fieldset className="load-fieldset">
+            <div className='labeled-field'>
               <NumberInput
+                label='Carga Inicial'
                 name='startValue'
                 value={load.startValue}
                 update={newValue => updateLoad(loadIndex, 'startValue', newValue)}
@@ -48,9 +48,9 @@ const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
               />
             </div>
 
-            <div className="input-wrapper">
-              <label>Carga Final</label>
+            <div className='labeled-field'>
               <NumberInput
+                label='Carga Final'
                 name='endValue'
                 value={load.endValue}
                 update={newValue => updateLoad(loadIndex, 'endValue', newValue)}
@@ -58,9 +58,9 @@ const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
               />
             </div>
 
-            <div className="input-wrapper">
-              <label>X Inicial</label>
+            <div className='labeled-field'>
               <NumberInput
+                label='X Inicial'
                 name='x0'
                 value={load.x0}
                 update={newValue => updateLoad(loadIndex, 'x0', newValue)}
@@ -70,9 +70,9 @@ const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
               />
             </div>
 
-            <div className="input-wrapper">
-              <label>X Final</label>
+            <div className='labeled-field'>
               <NumberInput
+                label='X Final'
                 name='xf'
                 value={load.xf}
                 update={newValue => updateLoad(loadIndex, 'xf', newValue)}

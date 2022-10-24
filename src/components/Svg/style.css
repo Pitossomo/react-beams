@@ -1,0 +1,102 @@
+svg { 
+  background-color: lightgray;
+  width: 90vw;
+  box-sizing: border-box;
+  max-height: 60vh;
+  z-index: 1;
+}
+
+svg * {
+  stroke-width: 0.2%;
+  stroke: black;
+}
+
+#distributed-loads-group-svg polygon {
+  fill: url(#vertical-lines-pattern)
+}
+
+#punctual-loads-group-svg.blurred *,
+#distributed-loads-group-svg.blurred * {
+  stroke: gray;
+  stroke-width: 0.1%;
+}
+
+#punctual-loads-group-svg.blurred text,
+#distributed-loads-group-svg.blurred text {
+  stroke: lightgray;
+}
+
+.blurred .load-arrow {
+  stroke: gray;
+  fill: gray;
+}
+
+.reaction-arrow.up * {
+  stroke: green;
+  fill: green
+}
+
+.reaction-arrow.down * {
+  stroke: red;
+  fill: red;
+}
+
+/*
+.reaction-arrow * {
+  fill: none;
+}
+*/
+
+#shearforce-group-svg *:not(text) {
+  fill: none;
+  stroke: blue;
+}
+
+#bending-moment-group-svg *:not(text) {
+  fill: none;
+  stroke: green;
+}
+
+#highlight-line {
+  stroke: red;
+  stroke-width: 0.4%;
+}
+
+#beam-svg {
+  stroke-width: 0.5%;
+}
+
+text {
+  stroke: maroon;
+  stroke-width: 0.01px;
+  font-size: 0.015em;
+}
+
+nav { 
+  background-color: rgb(190, 190, 190);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav * {
+  margin: 2px;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .svg-wrapper {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  svg {
+    width: 100vw;
+    padding: 2px;
+  }
+
+  text {
+    font-size: 0.03em;
+  }
+}

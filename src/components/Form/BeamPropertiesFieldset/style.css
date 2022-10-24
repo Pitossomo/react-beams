@@ -1,0 +1,9 @@
+.fields {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .fields {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,10 @@
+.support-fields {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .support-fields {
+    flex-direction: column;
+  }
+}

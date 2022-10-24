@@ -1,8 +1,8 @@
 import { Beam, DistributedLoad, Node, PunctualLoad } from "beamsjs"
 import Svg from "./components/Svg"
-import BeamForm from "./components/BeamForm"
 import Controls from "./components/Controls"
 import { useRef, useState } from "react"
+import Form from "./components/Form"
 
 function App() {
   const x0 = Math.random()*2
@@ -135,7 +135,7 @@ function App() {
         />
       </div>
       
-      <BeamForm
+      <Form
         beamParams={beamParams}
         setBeamParams={setBeamParams}
         updateDistributedLoads={updateDistributedLoads}

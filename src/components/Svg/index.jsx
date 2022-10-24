@@ -1,9 +1,9 @@
-import HighlightLine from "./Svg/HighlightLineSVG";
-import SvgResults from "./Svg/SvgResults";
-import dioLogo from "../imgs/dio.svg"
-import githubLogo from "../imgs/github.png"
-import linkedinLogo from "../imgs/linkedin.svg"
-
+import HighlightLine from "./HighlightLineSVG"
+import SvgResults from "./SvgResults"
+import dioLogo from "../../imgs/dio.svg"
+import githubLogo from "../../imgs/github.png"
+import linkedinLogo from "../../imgs/linkedin.svg"
+import './style.css'
 
 const Svg = ({svgRef, viewMode, beamParams, results, pointerCoordinates, updatePointerCoordinates}) => {
   const ICON_HEIGHT = '20px'

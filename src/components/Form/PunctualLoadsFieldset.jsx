@@ -27,23 +27,23 @@ const PunctualLoadsFieldset = ({beamParams, updateLoads}) => {
   }
 
   return (
-    <fieldset className="punctual-loads-fieldset">
-      <legend>Carregamentos Pontuais</legend>
+    <fieldset className="card loads-fieldset">
+      <strong>Carregamentos Pontuais</strong>
       { beamParams.punctualLoads.map((load, loadIndex) => (
         <div key={`pload${loadIndex}`} className='punctual-load hover-wrapper'>
-          <fieldset name="punctualload" className="punctual-load-fieldset">
-            <div>
-              <label>Carga:</label>
+          <fieldset className='load-fieldset'>
+            <div className='labeled-field'>
               <NumberInput
+                label='Carga'
                 name='value'
                 value={load.value}
                 update={newValue => updateLoad(loadIndex, 'value', newValue)}
                 unit={'kN'}
               />
             </div>
-            <div>
-              <label>X:</label>
+            <div className='labeled-field'> 
               <NumberInput
+                label='X'
                 name='x'
                 value={load.x}
                 update={newValue => updateLoad(loadIndex, 'x', newValue)}

@@ -1,9 +1,10 @@
-import BeamPropertiesFieldset from "./Form/BeamPropertiesFieldset"
-import DistributedLoadsFieldset from "./Form/DistributedLoadsFieldset"
-import PunctualLoadsFieldset from "./Form/PunctualLoadsFieldset"
-import SupportsFieldset from "./Form/SupportsFieldset"
+import BeamPropertiesFieldset from "./BeamPropertiesFieldset"
+import DistributedLoadsFieldset from "./DistributedLoadsFieldset"
+import PunctualLoadsFieldset from "./PunctualLoadsFieldset"
+import SupportsFieldset from "./SupportsFieldset"
+import './style.css'
 
-const BeamForm = ({beamParams, updateProperty, updatePunctualLoads, updateDistributedLoads, updateSupports} ) => {
+const Form = ({beamParams, updateProperty, updatePunctualLoads, updateDistributedLoads, updateSupports} ) => {
   return (
     <form className="beam-form">
       <BeamPropertiesFieldset beamParams={beamParams} updateProperty={updateProperty} />
@@ -17,4 +18,4 @@ const BeamForm = ({beamParams, updateProperty, updatePunctualLoads, updateDistri
   )
 }
 
-export default BeamForm
+export default Form

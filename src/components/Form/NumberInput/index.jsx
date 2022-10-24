@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { assertBetween, format } from "../../../utils/helpers"
 import './style.css'
 
-const NumberInput = ({name, value, update, unit, step, attributes = {}}) => {
+const NumberInput = ({label, name, value, update, unit, step, attributes = {}}) => {
   const [textValue, setTextValue] = useState(format(value))
   const [isTyping, setTyping] = useState(false)
 
@@ -45,19 +45,22 @@ const NumberInput = ({name, value, update, unit, step, attributes = {}}) => {
   }
 
   return (
-    <div className="input-wrapper">
-      <input
-        type="number"
-        name={name}
-        value={textValue}
-        onKeyDown={handleKeyDown}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        step={step}
-        {...attributes}
-      />
-      { unit ? <span>{unit}</span> : null }
-    </div>
+    <>
+      { label ? <label>{label}</label> : null}
+      <div className="input-wrapper">
+        <input
+          type="number"
+          name={name}
+          value={textValue}
+          onKeyDown={handleKeyDown}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          step={step}
+          {...attributes}
+        />
+        { unit ? <span>{unit}</span> : null }
+      </div>
+    </>
   )
 }
 

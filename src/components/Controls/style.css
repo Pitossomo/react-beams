@@ -1,0 +1,26 @@
+aside {
+  padding: 4px;
+  display: flex;
+  justify-content: space-between; 
+}
+
+aside .coordinates-wrapper {
+  display: flex;
+}
+
+.coordinates-wrapper * {
+  min-width: 40px;
+  margin: 0 5px;
+}
+
+@media (max-width: 600px) {
+  aside {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  aside .coordinates-wrapper {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}

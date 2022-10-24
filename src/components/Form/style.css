@@ -1,0 +1,102 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: 8px;
+  padding: 12px;
+  border: none;
+  background-color: #fffff8;
+  box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
+}
+
+.loads-fieldset {
+  display: flex;
+  flex-direction: column;
+  margin: 8px;
+}
+
+strong {
+  text-decoration: underline;
+} 
+
+.load-fieldset {
+  padding-left: 0;
+}
+
+.punctual-load, .distributed-load {
+  display: flex;
+}
+
+.hover-wrapper {
+  padding: 0;
+  margin: 0 4px;
+}
+
+.show-on-hover {
+  visibility: hidden;
+  padding: 2px;
+  margin: 0px;
+  font-size: 0.8em;
+  color: white;
+  text-decoration: none;
+  margin-left: -5px;
+  border: none;
+}
+
+.red { background-color: #ff6666; }
+.gray { background-color: gray; }
+
+.hover-wrapper:hover .show-on-hover {
+  visibility: visible;
+}
+
+.load-fieldset {
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  border: 0;
+}
+
+.addButton {
+  background-color: #66ff99;
+  font-size: 1em;
+  font-weight: bolder;
+  color: white;
+  text-decoration: none;
+  border: 0;
+}
+
+.addButton.small {
+  margin-left: 5px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.addButton.big {
+  margin-top: 8px;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .beam-form {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .addButton.small {
+    margin: 3px;
+    width: calc(100% - 2*3px);
+    height: fit-content;
+    border-radius: 0;
+  }
+
+  .beam-properties,
+  .load-fieldset,
+  .distributed-loads,
+  .punctual-loads,
+  .punctual-load-fieldset {
+    margin: 8px 0;
+    flex-direction: column;
+  }
+}
