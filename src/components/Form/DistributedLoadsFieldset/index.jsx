@@ -1,4 +1,4 @@
-import NumberInput from "./NumberInput"
+import NumberInput from "../NumberInput"
 
 const DistributedLoadsFieldset = ({beamParams, updateLoads}) => {
   function updateLoad (loadIndex, propertyName, newValue) {
