@@ -60,7 +60,7 @@ const SvgResults = ({viewMode, beamParams, results}) => {
       let extremeValues = []
       let momentPath = `M${SMALL_DX} 0 `
       for (let x = 0; x <= beamParams.length; x += OFFSET_DX) {
-        let momentX = Math.round(results.bendingMoment(x)*100)/100
+        let momentX = results.bendingMoment(x)
         momentPath += `L${x} ${momentX*SVG_Y_SCALE} `
         if (
           momentX && previousValues["Mx-1"] && previousValues["Mx-2"]
