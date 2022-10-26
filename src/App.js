@@ -3,29 +3,10 @@ import Svg from "./components/Svg"
 import Controls from "./components/Controls"
 import { useRef, useState } from "react"
 import Form from "./components/Form"
+import { initialState } from "./utils/initalState"
 
 function App() {
-  const x0 = Math.random()*2
-  const [beamParams, setBeamParams] = useState({
-    length: 10,
-    young: 25,
-    width: 0.14,
-    height: 0.30,
-    fck: 20,
-    cover: 0.02,
-    loadIncrease: 1.4,
-    supports: [0, 3.3, 6.7, 10],
-    distributedLoads: [{
-      startValue: Math.random()*10,
-      endValue: Math.random()*10,
-      x0: x0,
-      xf: Math.min(x0 + Math.random()*10,10) 
-    }],
-    punctualLoads: [{
-      value: Math.random()*10,
-      x: Math.random()*10
-    }]
-  })
+  const [beamParams, setBeamParams] = useState(initialState)
 
   const svgRef = useRef()
   const [results, setResults] = useState({})
