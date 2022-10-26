@@ -20,7 +20,10 @@ const TextSVG = ({x, y, content, anchor='start'}) => {
       textAnchor={anchor}
       dominantBaseline={ y <= 0 ? 'alphabetic' : 'hanging'}
     >
-      {content.toFixed(2).toLocaleString()}
+      { typeof content === 'number' 
+        ? content.toFixed(2).toLocaleString()
+        : content
+      }
     </text>
   )
 }

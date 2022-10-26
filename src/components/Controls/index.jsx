@@ -4,7 +4,8 @@ import './style.css'
 const Controls = ({viewMode, pointerCoordinates, updateViewMode}) => {
   const LABELS = {
     'SHEAR': 'Esforço cortante',
-    'MOMENTS': 'Momento fletor'
+    'MOMENTS': 'Momento fletor',
+    'STEEL_AREA': 'Área de aço'
   } 
   
   return (
@@ -16,6 +17,7 @@ const Controls = ({viewMode, pointerCoordinates, updateViewMode}) => {
           <option value="REACTIONS">Reações nos Apoios</option>
           <option value="SHEAR">Diagrama de Esforço Contante</option>
           <option value="MOMENTS">Diagrama de Momento Fletor</option>
+          <option value="STEEL_AREA">Área de Aço</option>
         </select>
       </div>
       <div className="coordinates-wrapper">

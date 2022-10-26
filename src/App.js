@@ -11,6 +11,9 @@ function App() {
     young: 25,
     width: 0.14,
     height: 0.30,
+    fck: 20,
+    cover: 0.02,
+    loadIncrease: 1.4,
     supports: [0, 3.3, 6.7, 10],
     distributedLoads: [{
       startValue: Math.random()*10,
@@ -136,6 +139,7 @@ function App() {
       </div>
       
       <Form
+        viewMode={viewMode}
         beamParams={beamParams}
         setBeamParams={setBeamParams}
         updateDistributedLoads={updateDistributedLoads}

@@ -102,6 +102,18 @@ const SvgResults = ({viewMode, beamParams, results}) => {
           })}
         </Fragment>
       )
+    case 'STEEL_AREA':
+      return (
+        <Fragment>
+          <DrawLoads isBlurred={true} />
+          <TextSVG
+            x={beamParams.length/2}
+            y={-1}
+            content='Em breve, incluiremos o cálculo da área de aço'
+            anchor='middle' 
+          />
+        </Fragment>
+      )
     default:
       return <DrawLoads />
   }
