@@ -1,0 +1,12 @@
+.steelBar {
+  stroke-width: '1px';
+  fill: none;
+}
+
+.negative {
+  stroke: red;
+}
+
+.positive {
+  stroke: blue;
+}
