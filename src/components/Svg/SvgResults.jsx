@@ -1,5 +1,6 @@
 import { Fragment } from "react"
 import { OFFSET_DX, SMALL_DX, SVG_OFFSET, SVG_Y_SCALE } from "../../utils/constants"
+import DetailsSVG from "./DetailsSVG"
 import LoadsSVG from "./LoadsSVG"
 import TextSVG from "./TextSVG"
 
@@ -105,7 +106,7 @@ const SvgResults = ({viewMode, beamParams, results}) => {
     case 'STEEL_AREA':
       return (
         <Fragment>
-          <DrawLoads isBlurred={true} />
+          <DetailsSVG beamParams={beamParams} results={results} />
           <TextSVG
             x={beamParams.length/2}
             y={-1}
