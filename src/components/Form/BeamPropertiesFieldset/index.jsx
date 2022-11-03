@@ -4,8 +4,8 @@ import './style.css'
 const BeamPropertiesFieldset = ({beamParams, updateProperty}) => {
   const beamProperties = [
     { name: 'length', label: 'Comprimento', unit: 'm', attributes: {min: 0} },
-    { name: 'young', label: 'Módulo de Young (E)', unit: 'm', attributes: { min: 1 } },
-    { name: 'width', label: 'Largura da viga (b)', unit: 'GPa', step: 0.01, attributes: {min: 0.01} },
+    { name: 'young', label: 'Módulo de Young (E)', unit: 'GPa', attributes: { min: 1 } },
+    { name: 'width', label: 'Largura da viga (b)', unit: 'm', step: 0.01, attributes: {min: 0.01} },
     { name: 'height', label: 'Altura da viga (h)', unit: 'm',  step: 0.01, attributes: {min: 0.01} },
   ]
   
