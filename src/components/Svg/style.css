@@ -57,6 +57,10 @@ svg * {
   stroke: green;
 }
 
+#steel-area-group-svg *:not(text) {
+  fill: none;
+}
+
 #highlight-line {
   stroke: red;
   stroke-width: 0.4%;

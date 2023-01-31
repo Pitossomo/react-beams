@@ -10,6 +10,7 @@ export const initialState = {
   fck: 20,
   cover: 0.02,
   loadIncrease: 1.4,
+  fyk: 500,
   
   // Supports
   supports: [0, 3.3, 6.7, 10],

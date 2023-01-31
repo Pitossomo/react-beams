@@ -2,7 +2,6 @@ import { Fragment } from "react"
 import './style.css'
 
 const DetailsSVG = ({beamParams, results}) => {
-  console.log(beamParams.supports)
       
   return <Fragment>
     <line x1='0' x2='0' y1='0' y2={-beamParams.height} />

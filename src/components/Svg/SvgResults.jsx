@@ -104,15 +104,22 @@ const SvgResults = ({viewMode, beamParams, results}) => {
         </Fragment>
       )
     case 'STEEL_AREA':
+      const areas = []
+      let areaPath = `M${SMALL_DX} 0 `
+      
+      for (let x = 0; x <= beamParams.length; x += OFFSET_DX) {
+        const areaX = Math.max(8*beamParams.width*beamParams.height, 2*results.bendingMoment(x)/(beamParams.fyk*beamParams.height)*100)
+        areas.push(areaX)
+        areaPath += `L${x} ${areaX*SVG_Y_SCALE} `
+      }
+
       return (
         <Fragment>
-          <DetailsSVG beamParams={beamParams} results={results} />
-          <TextSVG
-            x={beamParams.length/2}
-            y={-1}
-            content='Em breve, incluiremos o cálculo da área de aço'
-            anchor='middle' 
-          />
+          <DrawLoads isBlurred={true} />
+          <g id="steel-area-group-svg">
+            <path d={areaPath} />
+            <DetailsSVG beamParams={beamParams} results={results} />
+          </g>
         </Fragment>
       )
     default:
