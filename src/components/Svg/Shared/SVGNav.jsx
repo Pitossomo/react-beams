@@ -1,6 +1,6 @@
-import dioLogo from "../../imgs/dio.svg"
-import githubLogo from "../../imgs/github.png"
-import linkedinLogo from "../../imgs/linkedin.svg"
+import dioLogo from "../../../imgs/dio.svg"
+import githubLogo from "../../../imgs/github.png"
+import linkedinLogo from "../../../imgs/linkedin.svg"
 
 const ICON_HEIGHT = '20px'
 
@@ -10,11 +10,13 @@ const SVGNav = () => (
     <a href="https://www.linkedin.com/in/pedrocarvalhoeng/">
       <img height={ICON_HEIGHT}
         src={linkedinLogo}
+        alt="Linkedin logo"
       />
     </a>
     <a href="https://github.com/Pitossomo">
       <img height={ICON_HEIGHT} 
         src={githubLogo}
+        alt="Github logo"
         />
     </a>
     {
@@ -27,6 +29,7 @@ const SVGNav = () => (
     <a href="https://web.dio.me/users/pedro_h_teles?tab=achievements">
       <img height={ICON_HEIGHT}
         src={dioLogo}
+        alt="DIO logo"
         />
     </a>
   </nav>

@@ -1,4 +1,4 @@
-import { TEXT_OFFSET } from "../../utils/constants"
+import { TEXT_OFFSET } from "../../../utils/constants"
 
 const TextSVG = ({x, y, content, anchor='start'}) => {
   let xOffset

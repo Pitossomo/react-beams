@@ -1,7 +1,7 @@
 import { Fragment } from "react"
-import { SVG_OFFSET, SVG_Y_SCALE } from "../../utils/constants"
+import { SVG_OFFSET, SVG_Y_SCALE } from "../../../utils/constants"
 import PunctualLoadSVG from "./PunctualLoadSVG"
-import TextSVG from "./TextSVG"
+import TextSVG from "../Shared/TextSVG"
 
 const LoadsSVG = ({isBlurred, punctualLoads, distributedLoads}) => <>
   <g className={isBlurred ? 'blurred' : ''} id="distributed-loads-group-svg">

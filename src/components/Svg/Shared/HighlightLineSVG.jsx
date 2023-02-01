@@ -1,4 +1,4 @@
-import { SVG_Y_SCALE } from "../../utils/constants"
+import { SVG_Y_SCALE } from "../../../utils/constants"
 
 const HighlightLine = ({viewMode, pointerCoordinates}) => {
   if (!pointerCoordinates || viewMode === 'LOADS' || viewMode === 'REACTIONS') return null 

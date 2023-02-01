@@ -1,4 +1,4 @@
-import TextSVG from "./TextSVG"
+import TextSVG from "../Shared/TextSVG"
 
 const PunctualLoadSVG = ({value, x}) => {
   const y1 = value > 0 ? -0.1 : -1.5

@@ -1,9 +1,9 @@
-import HighlightLine from "./HighlightLineSVG"
-import SvgResults from "./SvgResults"
+import HighlightLine from "./Shared/HighlightLineSVG"
+import SvgResults from "./Outputs/SvgResults"
 import './style.css'
-import Defs from "./Defs"
-import BeamSVG from "./BeamSVG"
-import SVGNav from "./SVGNav"
+import Defs from "./Shared/Defs"
+import BeamSVG from "./Shared/BeamSVG"
+import SVGNav from "./Shared/SVGNav"
 
 const Svg = ({svgRef, viewMode, beamParams, results, pointerCoordinates, updatePointerCoordinates}) => {
   return <>

@@ -1,8 +1,8 @@
 import { Fragment } from "react"
-import { OFFSET_DX, SMALL_DX, SVG_OFFSET, SVG_Y_SCALE } from "../../utils/constants"
-import DetailsSVG from "./DetailsSVG"
-import LoadsSVG from "./LoadsSVG"
-import TextSVG from "./TextSVG"
+import { OFFSET_DX, SMALL_DX, SVG_OFFSET, SVG_Y_SCALE } from "../../../utils/constants"
+import DetailsSVG from "./Details"
+import LoadsSVG from "../Inputs/LoadsSVG"
+import TextSVG from "../Shared/TextSVG"
 
 const SvgResults = ({viewMode, beamParams, results}) => {
   const DrawLoads = ({isBlurred}) => (
